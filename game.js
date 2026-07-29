@@ -1835,7 +1835,6 @@ if (btnChangeHalf) {
 /* ==============================================================
    Auto Initialize
    ============================================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
 
   if (
@@ -1855,6 +1854,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
