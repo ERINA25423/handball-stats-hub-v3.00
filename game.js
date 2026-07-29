@@ -1846,6 +1846,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.App.Game.init();
   }
 
+  if (
+    window.App &&
+    window.App.Timer &&
+    typeof window.App.Timer.init === "function"
+  ) {
+    window.App.Timer.init();
+  }
+
 });
 
 
