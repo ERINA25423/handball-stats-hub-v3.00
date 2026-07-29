@@ -1351,11 +1351,6 @@ App.Game = (function () {
 
   } 
 
-     renderPlayerDetails();
-     renderRanking();
-     renderGoalkeeperAnalysis();
-     renderCourtPlayerAnalysis();
-
        /* ==========================================================
      CSV Export
      ========================================================== */
