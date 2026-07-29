@@ -1739,6 +1739,63 @@ App.Game = (function () {
       bindShotSelectionEvents();
   }
 
+   const btnStartTimer = document.getElementById("btn-timer-start");
+if (btnStartTimer) {
+  btnStartTimer.addEventListener("click", startTimer);
+}
+
+const btnMinus1 = document.getElementById("btn-timer-minus1");
+if (btnMinus1) {
+  btnMinus1.addEventListener("click", () => {
+    elapsedSeconds = Math.max(0, elapsedSeconds - 1);
+    renderTimer();
+  });
+}
+
+const btnPlus1 = document.getElementById("btn-timer-plus1");
+if (btnPlus1) {
+  btnPlus1.addEventListener("click", () => {
+    elapsedSeconds++;
+    renderTimer();
+  });
+}
+
+const btnMinus10 = document.getElementById("btn-timer-minus10");
+if (btnMinus10) {
+  btnMinus10.addEventListener("click", () => {
+    elapsedSeconds = Math.max(0, elapsedSeconds - 10);
+    renderTimer();
+  });
+}
+
+const btnPlus10 = document.getElementById("btn-timer-plus10");
+if (btnPlus10) {
+  btnPlus10.addEventListener("click", () => {
+    elapsedSeconds += 10;
+    renderTimer();
+  });
+}
+
+const btnSaveEvent = document.getElementById("btn-save-event");
+if (btnSaveEvent) {
+  btnSaveEvent.addEventListener("click", handleSaveEvent);
+}
+
+const btnUndo = document.getElementById("btn-undo");
+if (btnUndo) {
+  btnUndo.addEventListener("click", handleUndo);
+}
+
+const btnEndMatch = document.getElementById("btn-end-match");
+if (btnEndMatch) {
+  btnEndMatch.addEventListener("click", handleEndMatch);
+}
+
+const btnChangeHalf = document.getElementById("btn-change-half");
+if (btnChangeHalf) {
+  btnChangeHalf.addEventListener("click", toggleHalf);
+}
+
   /* ==========================================================
      Initialize
      ========================================================== */
