@@ -723,9 +723,11 @@ btnOther:
 
   function handleEndMatch() {
 
-    endMatch();
+  alert("ENDボタンが押されました");
 
-  }
+  endMatch();
+
+}
 
        /* ==========================================================
      Match Timer
