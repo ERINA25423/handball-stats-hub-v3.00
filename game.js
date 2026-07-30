@@ -451,7 +451,7 @@ btnOther:
 
         button.classList.toggle(
           "active",
-          button.dataset.shotCourse === selectedCourse
+          button.dataset.Course === selectedCourse
         );
 
       });
@@ -497,7 +497,7 @@ btnOther:
         button.addEventListener("click", () => {
 
           selectShotCourse(
-            button.dataset.shotCourse
+            button.dataset.Course
           );
 
         });
