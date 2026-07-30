@@ -274,6 +274,12 @@ btnOther:
 
   }
 
+   function handleGotoHistory() {
+
+  App.UI.showScreen("screen-history");
+
+}
+
   function handleBackHome() {
 
     App.UI.showScreen("screen-home");
