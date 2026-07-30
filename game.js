@@ -1740,6 +1740,12 @@ btnOther:
       );
     }
 
+      if (e.btnGotoHistory) {
+  e.btnGotoHistory.addEventListener(
+    "click",
+    handleGotoHistory
+  );
+}
          
 
     if (e.btnBackHome) {
