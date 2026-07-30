@@ -1737,6 +1737,26 @@ App.Game = (function () {
     bindNumberInputs(); 
 
       bindShotSelectionEvents();
+
+      if (e.btnSaveEvent) {
+  e.btnSaveEvent.addEventListener("click", handleSaveEvent);
+}
+
+if (e.btnUndo) {
+  e.btnUndo.addEventListener("click", handleUndo);
+}
+
+if (e.btnChangeHalf) {
+  e.btnChangeHalf.addEventListener("click", handleChangeHalf);
+}
+
+if (e.btnEndMatch) {
+  e.btnEndMatch.addEventListener("click", handleEndMatch);
+}
+
+if (e.btnOther) {
+  e.btnOther.addEventListener("click", handleOther);
+}
   }
 
     if (window.App && window.App.Timer) {
