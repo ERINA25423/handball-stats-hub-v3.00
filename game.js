@@ -274,9 +274,37 @@ btnOther:
 
   }
 
-   function handleGotoHistory() {
+   async function handleGotoHistory() {
 
   App.UI.showScreen("screen-history");
+
+  const history = document.getElementById("history-list");
+  history.innerHTML = "";
+
+  const matches = await App.Storage.getMatches();
+
+  if (matches.length === 0) {
+    history.innerHTML = "<p>保存された試合はありません。</p>";
+    return;
+  }
+
+  matches.forEach(match => {
+
+    const card = document.createElement("div");
+    card.className = "history-item";
+
+    card.innerHTML = `
+      <strong>${match.date || "-"}</strong><br>
+      ${match.opponent || "Opponent"}
+    `;
+
+    card.addEventListener("click", () => {
+      openHistoryItem(match.id);
+    });
+
+    history.appendChild(card);
+
+  });
 
 }
 
