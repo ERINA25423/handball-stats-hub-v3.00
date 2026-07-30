@@ -446,7 +446,7 @@ btnOther:
   function renderSelectedShotCourse() {
 
     document
-      .querySelectorAll("[data-shot-course]")
+      .querySelectorAll("[data-course]")
       .forEach(button => {
 
         button.classList.toggle(
