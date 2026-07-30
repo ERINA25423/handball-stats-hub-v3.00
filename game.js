@@ -136,6 +136,21 @@ App.Game = (function () {
       btnBackHome:
         document.getElementById("btn-back-home"),
 
+       btnSaveEvent:
+  document.getElementById("btn-save-event"),
+
+btnUndo:
+  document.getElementById("btn-undo"),
+
+btnChangeHalf:
+  document.getElementById("btn-change-half"),
+
+btnEndMatch:
+  document.getElementById("btn-end-match"),
+
+btnOther:
+  document.getElementById("btn-other"),
+
       matchDate:
         document.getElementById("match-date"),
 
