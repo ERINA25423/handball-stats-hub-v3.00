@@ -130,6 +130,9 @@ App.Game = (function () {
       btnGotoNewMatch:
         document.getElementById("btn-goto-new-match"),
 
+       btnGotoHistory:
+  document.getElementById("btn-goto-history"),
+       
       btnStartMatch:
         document.getElementById("btn-start-match"),
 
