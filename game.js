@@ -1780,6 +1780,21 @@ App.UI.showScreen("screen-analysis");
       );
     }
 
+const btnBackAnalysis =
+  document.getElementById("btn-back-from-analysis");
+
+if (btnBackAnalysis) {
+  btnBackAnalysis.addEventListener("click", () => {
+
+    currentMatch = null;
+
+    resetSelections();
+
+    App.UI.showScreen("screen-home");
+
+  });
+}
+      
       if (e.btnGotoHistory) {
   e.btnGotoHistory.addEventListener(
     "click",
