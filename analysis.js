@@ -423,3 +423,7 @@ App.Analysis = (function () {
     renderForMatch,
   };
 })();
+
+if (window.App && window.App.Analysis) {
+    window.App.Analysis.init();
+}
