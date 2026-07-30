@@ -628,8 +628,7 @@ btnOther:
 
 renderHistory();
 }
-  
-}
+
 
       function renderHistory() {
 
