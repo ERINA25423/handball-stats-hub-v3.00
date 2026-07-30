@@ -599,6 +599,8 @@ btnOther:
 
   function canSaveEvent() {
 
+     alert("saveEvent start");
+     
     return (
       selectedPosition &&
       selectedCourse &&
