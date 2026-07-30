@@ -742,11 +742,23 @@ btnOther:
 
       alert("試合を保存しました。");
 
-      currentMatch = null;
+updateAnalysis();
 
-      resetSelections();
+renderAnalysis();
 
-      App.UI.showScreen("screen-home");
+renderAnalysisDetails();
+
+renderPlayerAnalysis();
+
+renderPlayerDetails();
+
+renderRanking();
+
+renderGoalkeeperAnalysis();
+
+renderCourtPlayerAnalysis();
+
+App.UI.showScreen("screen-analysis");
 
     } catch (error) {
 
