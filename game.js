@@ -1763,16 +1763,18 @@ if (e.btnUndo) {
   e.btnUndo.addEventListener("click", handleUndo);
 }
 
-if (e.btnChangeHalf) {
-  e.btnChangeHalf.addEventListener("click", handleChangeHalf);
+// if (e.btnChangeHalf) {
+//   e.btnChangeHalf.addEventListener("click", handleChangeHalf);
+// 
 }
 
 if (e.btnEndMatch) {
   e.btnEndMatch.addEventListener("click", handleEndMatch);
 }
 
-if (e.btnOther) {
-  e.btnOther.addEventListener("click", handleOther);
+// if (e.btnOther) {
+//   e.btnOther.addEventListener("click", handleOther);
+//
 }
   }
 
