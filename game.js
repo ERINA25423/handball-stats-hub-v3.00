@@ -1172,9 +1172,13 @@ App.UI.showScreen("screen-analysis");
       ) {
 
         const match =
-          await window.App.Storage.getMatch(matchId);
+    await window.App.Storage.getMatch(matchId);
 
-        loadMatch(match);
+currentMatch = match;
+
+App.Analysis.renderForMatch(match);
+
+App.UI.showScreen("screen-analysis");
 
       }
 
