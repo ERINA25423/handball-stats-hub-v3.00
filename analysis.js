@@ -371,6 +371,7 @@ App.Analysis = (function () {
     const tabButtons = document.querySelectorAll("#analysis-tabs .tab-btn");
     tabButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
+        console.log(btn.dataset.tab);
         const tabKey = btn.dataset.tab;
         tabButtons.forEach((b) => b.classList.toggle("active", b === btn));
         document.querySelectorAll(".tab-panel").forEach((panel) => {
