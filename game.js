@@ -626,34 +626,7 @@ btnOther:
     createEventObject()
   );
 
-  updateAnalysis();
-
-  renderHistory();
-
-  renderAnalysis();
-
-  renderAnalysisDetails();
-
-  renderPlayerAnalysis();
-
-  renderPlayerDetails();
-
-  renderRanking();
-
-  renderGoalkeeperAnalysis();
-
-  renderCourtPlayerAnalysis();
-
-  resetSelections();
-
-  renderSelectedPosition();
-
-  renderSelectedShotCourse();
-
-  renderSelectedShotType();
-
-  renderSelectedResult();
-
+  
 }
 
       function renderHistory() {
@@ -741,22 +714,6 @@ btnOther:
       }
 
       alert("試合を保存しました。");
-
-updateAnalysis();
-
-renderAnalysis();
-
-renderAnalysisDetails();
-
-renderPlayerAnalysis();
-
-renderPlayerDetails();
-
-renderRanking();
-
-renderGoalkeeperAnalysis();
-
-renderCourtPlayerAnalysis();
 
 App.UI.showScreen("screen-analysis");
 
