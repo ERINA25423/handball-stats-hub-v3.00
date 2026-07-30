@@ -446,7 +446,7 @@ btnOther:
   function renderSelectedShotCourse() {
 
     document
-      .querySelectorAll("[data-shot-course]")
+      .querySelectorAll("[data-course]")
       .forEach(button => {
 
         button.classList.toggle(
@@ -491,7 +491,7 @@ btnOther:
   function bindShotSelectionEvents() {
 
     document
-      .querySelectorAll("[data-shot-course]")
+      .querySelectorAll("[data-course]")
       .forEach(button => {
 
         button.addEventListener("click", () => {
