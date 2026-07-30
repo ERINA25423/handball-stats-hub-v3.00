@@ -625,9 +625,6 @@ btnOther:
   currentMatch.events.push(
     createEventObject()
   );
-currentMatch.events.push(
-    createEventObject()
-);
 
 renderHistory();
 }
