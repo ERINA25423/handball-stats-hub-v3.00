@@ -649,9 +649,6 @@ renderHistory();
 
       const row = document.createElement("div");
 
-      row.style.background = "red";
-row.style.color = "white"; 
-
       row.className = "history-item";
 
       row.textContent =
@@ -663,8 +660,6 @@ row.style.color = "white";
         + `${event.result}`;
 
       e.history.appendChild(row);
-
-       alert("append");
 
     });
 
