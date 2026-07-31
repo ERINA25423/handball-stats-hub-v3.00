@@ -635,7 +635,7 @@ renderHistory();
 
       function renderHistory() {
 
-alert(currentMatch.events.length);
+alert("append");
          
     const e = els();
 
