@@ -1844,332 +1844,514 @@ input:focus-visible{
 
 }
 
-/* ===========================================================
-   PHONE LANDSCAPE (Smartphone Only)
-   =========================================================== */
+/* ==========================================================
+   RECORD SCREEN v3.00 (Portrait Only)
+   Part 1
+========================================================== */
 
-@media screen and (orientation: landscape) and (max-width:932px){
-
-html,
-body{
-    width:100%;
-    height:100%;
-    margin:0;
-    overflow:hidden;
-}
-
-#app{
-    width:100%;
-    height:100vh;
-    max-width:none;
-}
-
-.screen{
-    min-height:100vh;
-    padding:3px;
-    overflow:hidden;
-
+#screen-record{
     display:flex;
     flex-direction:column;
+    gap:16px;
+    padding:16px;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:#11151d;
 }
 
-/* ---------- HEADER ---------- */
+/* ---------- Title ---------- */
 
-.record-header{
+#screen-record h1{
+    font-size:2rem;
+    font-weight:700;
+    text-align:center;
+    margin:0;
+}
 
+/* ---------- Team ---------- */
+
+#team-toggle{
     display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
 
-    grid-template-columns:
-        auto
-        1fr
-        auto;
+#team-toggle button{
+    height:60px;
+    font-size:1.2rem;
+    font-weight:700;
+    border-radius:16px;
+}
 
-    gap:4px;
+/* ---------- Timer ---------- */
 
+.timer-area{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#match-timer{
+    width:100%;
+    height:72px;
+
+    display:flex;
+    justify-content:center;
     align-items:center;
 
-    margin-bottom:4px;
+    font-size:2.3rem;
+    font-weight:bold;
 
+    border-radius:18px;
+
+    background:#202633;
 }
 
-.app-title{
+/* ---------- Timer Buttons ---------- */
 
-    font-size:.95rem;
-
-}
-
-.half-label{
-
-    padding:3px 6px;
-
-    font-size:.62rem;
-
-}
-
-.timer-display,
-#match-timer{
-
-    min-width:64px;
-
-    padding:3px 6px;
-
-    font-size:1rem;
-
-}
-
-/* ---------- TOOLBAR ---------- */
-
-.toolbar-row{
-
+.timer-buttons{
     display:grid;
+    grid-template-columns:
+        repeat(5,1fr);
 
-    grid-template-columns:repeat(7,1fr);
-
-    gap:3px;
-
-    margin-bottom:4px;
-
+    gap:10px;
 }
 
-.toolbar-btn{
+.timer-buttons button{
 
-    height:26px;
+    height:58px;
 
-    padding:2px;
+    border-radius:16px;
 
-    font-size:.52rem;
+    font-size:1.15rem;
 
-    border-radius:8px;
-
+    font-weight:700;
 }
 
-/* ---------- MAIN GRID ---------- */
+/* STARTだけ緑 */
+
+#btn-start-timer{
+    background:#1fa53a;
+    color:#fff;
+}
+
+/* ---------- Half ---------- */
+
+#btn-change-half{
+    align-self:flex-end;
+
+    width:110px;
+    height:48px;
+
+    border-radius:24px;
+
+    font-weight:700;
+}
+
+/* ==========================================================
+   RECORD SCREEN v3.00
+   Part 2
+   Position Area
+========================================================== */
+
+/* メイン入力エリア */
 
 .record-grid{
+    display:grid;
+    grid-template-columns:
+        1.35fr
+        1fr
+        1fr
+        1fr;
+
+    gap:12px;
+
     flex:1;
+
     min-height:0;
-    overflow:hidden;
 }
+
+/* ---------- 共通 ---------- */
+
+.record-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.record-column h3{
+
+    text-align:center;
+
+    font-size:0.95rem;
+
+    margin:0;
+
+    padding:8px;
+
+    background:#202633;
+
+    border-radius:10px;
+}
+
+/* ---------- Position ---------- */
+
+.position-panel{
 
     display:grid;
 
     grid-template-columns:
+        repeat(2,1fr);
 
-        1.15fr
-        1.20fr
-        .62fr
-        .62fr;
+    gap:10px;
 
-    gap:5px;
-
-    min-height:0;
-
+    flex:1;
 }
 
-/* ---------- PANEL ---------- */
-
-.panel{
-
-    padding:5px;
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-}
-
-.panel-title{
-
-    margin-bottom:4px;
-
-    font-size:.55rem;
-
-    letter-spacing:.15em;
-
-}
-
-/* ---------- HEIGHT ---------- */
-
-.panel-position,
-.panel-course,
-.panel-type,
-.panel-result{
-
-    height:170px;
-
-    min-height:170px;
-
-}
-
-/* ---------- POSITION ---------- */
-
-.position-grid{
-
-    gap:3px;
-
-}
+/* ボタン */
 
 .position-btn{
 
-    min-height:32px;
+    display:flex;
 
-    gap:2px;
+    flex-direction:column;
 
-    padding:2px;
+    align-items:center;
 
+    justify-content:center;
+
+    gap:6px;
+
+    min-height:72px;
+
+    border-radius:14px;
+
+    background:#232b38;
 }
 
-.position-label{
+/* ポジション名 */
 
-    font-size:.55rem;
+.position-btn span{
 
+    font-size:1rem;
+
+    font-weight:700;
 }
 
-.number-input{
+/* 背番号入力 */
 
-    width:28px;
+.position-btn input{
 
-    height:18px;
+    width:80%;
 
-    font-size:.55rem;
+    height:34px;
 
+    border:none;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+    background:#fff;
+
+    color:#000;
 }
+
+/* 選択中 */
+
+.position-btn.active{
+
+    background:#2e6bff;
+}
+
+/* GK・EPも同じサイズ */
+
+.position-btn.gk,
+.position-btn.ep{
+
+    min-height:72px;
+}
+
+
+/* ==========================================================
+   RECORD SCREEN v3.00
+   Part 3
+   COURSE / TYPE / RESULT
+========================================================== */
 
 /* ---------- COURSE ---------- */
 
-.course-grid{
+.course-panel{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+    gap:8px;
 
-    gap:2px;
-
+    flex:1;
 }
 
 .course-btn{
 
-    font-size:.60rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
+    min-height:60px;
+
+    border-radius:12px;
+
+    background:#232b38;
+
+    font-size:0.95rem;
+    font-weight:700;
+
+    transition:.15s;
 }
 
-/* ---------- TYPE ---------- */
-
-.type-btn{
-
-    margin-bottom:3px;
-
-    font-size:.52rem;
-
+.course-btn.active{
+    background:#2e6bff;
 }
 
-/* ---------- RESULT ---------- */
 
-.result-btn{
+/* ---------- SHOT TYPE ---------- */
 
-    margin-bottom:3px;
-
-    font-size:.52rem;
-
-}
-
-/* ---------- ACTION ---------- */
-
-.action-row{
+.type-panel{
 
     display:grid;
 
-    grid-template-columns:
+    grid-template-columns:1fr;
 
-        .65fr
-        .65fr
-        .65fr
-        .8fr
-        1.3fr
-        1.15fr;
+    gap:10px;
 
-    gap:3px;
-
-    margin-top:4px;
-
+    flex:1;
 }
 
-.btn-action{
+.type-btn{
 
-    height:24px;
+    display:flex;
 
-    font-size:.48rem;
+    justify-content:center;
+    align-items:center;
 
-    border-radius:8px;
+    min-height:60px;
 
+    border-radius:12px;
+
+    background:#232b38;
+
+    font-size:0.95rem;
+
+    font-weight:700;
 }
 
-.btn-save,
-.btn-end{
+.type-btn.active{
 
-    height:30px;
-
-    font-size:.55rem;
-
-    border-radius:8px;
-
+    background:#6a4cff;
 }
 
-/* ---------- HISTORY ---------- */
 
-.record-history{
+/* ---------- RESULT ---------- */
 
-    margin-top:3px;
+.result-panel{
 
-    max-height:38px;
+    display:grid;
 
-    overflow-y:auto;
+    grid-template-columns:1fr;
 
+    gap:10px;
+
+    flex:1;
 }
 
-.history-item{
+.result-btn{
 
-    padding:2px 4px;
+    display:flex;
 
-    font-size:.48rem;
+    justify-content:center;
+    align-items:center;
 
-    line-height:1.2;
+    min-height:60px;
 
+    border-radius:12px;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+    color:#fff;
 }
 
-/* ---------- SAFETY ---------- */
+/* 色分け */
 
-.position-grid,
-.course-grid,
-.toolbar-row,
-.action-row{
-
-    min-width:0;
-
+.result-btn.goal{
+    background:#2fb344;
 }
+
+.result-btn.save{
+    background:#1971c2;
+}
+
+.result-btn.miss{
+    background:#d9480f;
+}
+
+.result-btn.block{
+    background:#7048e8;
+}
+
+.result-btn.active{
+    transform:scale(0.96);
+}
+
+
+/* ==========================================================
+   RECORD SCREEN v3.00
+   Part 4
+   Bottom Controls
+========================================================== */
+
+/* ---------- 下部全体 ---------- */
+
+.bottom-controls{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:12px;
+}
+
+/* ---------- OTHER HISTORY UNDO ---------- */
+
+.utility-buttons{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+}
+
+.utility-buttons button{
+
+    height:50px;
+
+    border-radius:12px;
+
+    font-size:.95rem;
+
+    font-weight:700;
+}
+
+/* ---------- CHANGE HALF ---------- */
+
+#btn-change-half{
+
+    width:100%;
+
+    height:54px;
+
+    border-radius:14px;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    background:#ffb300;
+
+    color:#111;
+}
+
+/* ---------- SAVE EVENT ---------- */
+
+#btn-save-event{
+
+    width:100%;
+
+    height:64px;
+
+    border:none;
+
+    border-radius:16px;
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    background:#1976d2;
+
+    color:#fff;
+}
+
+/* ---------- END MATCH ---------- */
+
+#btn-end-match{
+
+    width:100%;
+
+    height:70px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    background:#d32f2f;
+
+    color:#fff;
+}
+
+/* ---------- 押した時 ---------- */
 
 button{
 
-    min-width:0;
-
-    white-space:nowrap;
-
+    transition:.15s;
 }
 
-.panel *{
+button:active{
 
-    max-width:100%;
-
+    transform:scale(.97);
 }
 
-#auth-footer{
+/* ---------- 小さい画面対策 ---------- */
 
-    display:none;
+@media (max-height:700px){
 
+    .utility-buttons button{
+
+        height:44px;
+    }
+
+    #btn-change-half{
+
+        height:48px;
+    }
+
+    #btn-save-event{
+
+        height:56px;
+    }
+
+    #btn-end-match{
+
+        height:62px;
+    }
 }
 
-}
 
-.screen.active{
-    display:flex;
-    flex-direction:column;
-}
 
 
 /* ===========================================================
