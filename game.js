@@ -145,9 +145,7 @@ App.Game = (function () {
 btnUndo:
   document.getElementById("btn-undo"),
 
-       history:
-    document.getElementById("history-list"),
-
+       history: document.getElementById("record-history-list"),
 btnChangeHalf:
   document.getElementById("btn-change-half"),
 
