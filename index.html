@@ -61,7 +61,7 @@
   <!-- ============================================================ -->
   <section id="screen-record" class="screen">
 
-    <header class="record-header">
+    <div class="record-grid">
       <h1 class="app-title">Handball Stats Hub</h1>
       <div class="half-label" id="half-label">1st Half</div>
       <div class="timer-display" id="match-timer">00:00</div>
@@ -72,18 +72,29 @@
       <button class="toolbar-btn active" id="btn-team-my" data-team="my">MY TEAM</button>
       <button class="toolbar-btn" id="btn-team-opponent" data-team="opponent">OPPONENT</button>
       </div>
-      <button class="toolbar-btn" id="btn-timer-minus10" data-timer-adjust="-10">−10s</button>
-      <button class="toolbar-btn" id="btn-timer-minus1" data-timer-adjust="-1">−1s</button>
-      <button class="toolbar-btn toolbar-btn-accent" id="btn-timer-start">START</button>
-      <button class="toolbar-btn" id="btn-timer-plus1" data-timer-adjust="1">+1s</button>
-      <button class="toolbar-btn" id="btn-timer-plus10" data-timer-adjust="10">+10s</button>
+      <div class="timer-buttons">
+
+    <button>-10</button>
+
+    <button>-1</button>
+
+    <button id="btn-start-timer">
+        START
+    </button>
+
+    <button>+1</button>
+
+    <button>+10</button>
+
+</div>
     </div>
 
     <div class="record-grid">
 
       <!-- POSITION -->
-      <div class="panel panel-position">
-        <div class="panel-title">POSITION</div>
+      <div class="record-column">
+        <h3>POSITION</h3>
+<div class="position-panel">
         <div class="position-grid" id="position-grid">
           <button class="position-btn" data-position="LW">
             <span class="position-label">LW</span>
@@ -121,8 +132,9 @@
       </div>
 
       <!-- SHOT COURSE -->
-      <div class="panel panel-course">
-        <div class="panel-title">SHOT COURSE</div>
+      <div class="record-column">
+<h3>COURSE</h3>
+<div class="course-panel">
         <div class="course-grid" id="course-grid">
           <button class="course-btn" data-course="LT">LT</button>
           <button class="course-btn" data-course="CT">CT</button>
@@ -137,32 +149,51 @@
       </div>
 
       <!-- SHOT TYPE -->
-      <div class="panel panel-type">
-        <div class="panel-title">SHOT TYPE</div>
+      <div class="record-column">
+<h3>TYPE</h3><div class="type-panel">
         <button class="type-btn" data-shot-type="Normal">Normal</button>
         <button class="type-btn" data-shot-type="Fast Break">Fast Break</button>
         <button class="type-btn" data-shot-type="7m">7m</button>
       </div>
 
       <!-- RESULT -->
-      <div class="panel panel-result">
-        <div class="panel-title">RESULT</div>
+      <div class="record-column">
+
+<h3>RESULT</h3>
+
+<div class="result-panel">
         <button class="result-btn result-goal" data-result="GOAL">GOAL</button>
         <button class="result-btn result-saved" data-result="SAVED">SAVED</button>
         <button class="result-btn result-miss" data-result="MISS">MISS</button>
         <button class="result-btn result-block" data-result="BLOCK">BLOCK</button>
       </div>
 
+    <div class="action-row">
+     <div class="bottom-controls">
+
+    <div class="utility-buttons">
+
+        <button>OTHER</button>
+
+        <button>HISTORY</button>
+
+        <button>UNDO</button>
+
     </div>
 
-    <div class="action-row">
-      <button id="btn-other" class="btn btn-action">OTHER</button>
-      <button id="btn-inmatch-history" class="btn btn-action">HISTORY</button>
-      <button id="btn-undo" class="btn btn-action">UNDO</button>
-      <button id="btn-change-half" class="btn btn-action">CHANGE HALF</button>
-      <button id="btn-save-event" class="btn btn-save">SAVE EVENT</button>
-      <button id="btn-end-match" class="btn btn-end">END &amp; SAVE MATCH</button>
-    </div>
+    <button id="btn-change-half">
+        CHANGE HALF
+    </button>
+
+    <button id="btn-save-event">
+        SAVE EVENT
+    </button>
+
+    <button id="btn-end-match">
+        END & SAVE MATCH
+    </button>
+
+</div>
 
     <div class="record-history">
       <div id="history-list" class="history-list"></div>
