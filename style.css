@@ -1851,7 +1851,7 @@ input:focus-visible{
    style.css の END OF FILE の直前へ追加
    =========================================================== */
 
-@media screen and (orientation:landscape) and (max-height:500px){
+@media (orientation: landscape) and (max-width:1024px){
 
 html,
 body{
