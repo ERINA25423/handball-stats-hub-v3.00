@@ -83,8 +83,9 @@ body{
         20px;
 }
 
-.screen.active{
+.screen.active#screen-record{
     display:flex;
+}
 }
 
 /* ---------- TYPOGRAPHY ---------- */
@@ -394,118 +395,6 @@ a{
 }
 
 
-/* ==========================================================
-   RECORD HEADER v4
-========================================================== */
-
-#screen-record{
-
-    padding:10px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-
-}
-
-/* ---------- Team ---------- */
-
-.team-row{
-
-    width:100%;
-}
-
-.team-toggle{
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px;
-
-}
-
-.team-toggle button{
-
-    height:40px;
-    border-radius:10px;
-    font-size:15px;
-    font-weight:700;
-
-}
-
-/* ---------- Timer ---------- */
-
-.timer-row{
-
-    display:grid;
-    grid-template-columns:95px 1fr;
-    gap:8px;
-
-}
-
-.half-display{
-
-    height:42px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#1d2330;
-
-    border-radius:10px;
-
-    font-size:14px;
-    font-weight:700;
-
-}
-
-.match-timer{
-
-    height:42px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#1d2330;
-
-    border-radius:10px;
-
-    font-size:30px;
-    font-weight:700;
-
-}
-
-/* ---------- Timer Buttons ---------- */
-
-.timer-button-row{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(5,1fr);
-
-    gap:6px;
-
-}
-
-.timer-button-row button{
-
-    height:32px;
-
-    border-radius:8px;
-
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-#btn-start-stop{
-
-    background:#16a34a;
-    color:white;
-
-}
 /* ===========================================================
    TOOLBAR
    =========================================================== */
