@@ -663,6 +663,8 @@ renderHistory();
 
       e.history.appendChild(row);
 
+       alert("append");
+
     });
 
   }
