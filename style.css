@@ -1844,6 +1844,207 @@ input:focus-visible{
 
 }
 
+/* ===========================================================
+   PHONE LANDSCAPE
+   =========================================================== */
+
+@media screen and (orientation:landscape) and (max-width:932px){
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+#app{
+    width:100%;
+    height:100vh;
+    max-width:none;
+}
+
+.screen{
+    min-height:100vh;
+    padding:4px;
+    overflow:hidden;
+}
+
+/* ---------- HEADER ---------- */
+
+.record-header{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:6px;
+    align-items:center;
+    margin-bottom:6px;
+}
+
+.app-title{
+    font-size:1rem;
+}
+
+.half-label{
+    font-size:.7rem;
+    padding:4px 8px;
+}
+
+.timer-display,
+#match-timer{
+    min-width:70px;
+    padding:4px 6px;
+    font-size:1.1rem;
+}
+
+/* ---------- TOOLBAR ---------- */
+
+.toolbar-row{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:4px;
+    margin-bottom:6px;
+}
+
+.toolbar-btn{
+    height:30px;
+    font-size:.55rem;
+    padding:2px;
+}
+
+/* ---------- MAIN GRID ---------- */
+
+.record-grid{
+    display:grid;
+    grid-template-columns:
+        1.15fr
+        1.25fr
+        .6fr
+        .6fr;
+    gap:6px;
+}
+
+/* ---------- PANEL ---------- */
+
+.panel{
+    padding:6px;
+}
+
+.panel-title{
+    font-size:.6rem;
+    margin-bottom:6px;
+}
+
+.panel-position,
+.panel-course,
+.panel-type,
+.panel-result{
+    min-height:235px;
+    height:235px;
+}
+
+/* ---------- POSITION ---------- */
+
+.position-grid{
+    gap:4px;
+}
+
+.position-btn{
+    min-height:42px;
+    padding:3px;
+    gap:3px;
+}
+
+.position-label{
+    font-size:.62rem;
+}
+
+.number-input{
+    width:32px;
+    height:20px;
+    font-size:.6rem;
+}
+
+/* ---------- COURSE ---------- */
+
+.course-grid{
+    gap:3px;
+}
+
+.course-btn{
+    font-size:.7rem;
+}
+
+/* ---------- TYPE ---------- */
+
+.type-btn{
+    margin-bottom:4px;
+    font-size:.58rem;
+}
+
+/* ---------- RESULT ---------- */
+
+.result-btn{
+    margin-bottom:4px;
+    font-size:.58rem;
+}
+
+/* ---------- ACTION ---------- */
+
+.action-row{
+    grid-template-columns:
+        .7fr
+        .7fr
+        .7fr
+        .9fr
+        1.4fr
+        1.2fr;
+    gap:4px;
+    margin-top:6px;
+}
+
+.btn-action{
+    height:32px;
+    font-size:.55rem;
+}
+
+.btn-save,
+.btn-end{
+    height:38px;
+    font-size:.65rem;
+}
+
+/* ---------- HISTORY ---------- */
+
+.record-history{
+    max-height:55px;
+    overflow-y:auto;
+    margin-top:4px;
+}
+
+.history-item{
+    font-size:.55rem;
+    padding:3px 5px;
+}
+
+/* ---------- OVERFLOW ---------- */
+
+.panel,
+.position-grid,
+.course-grid,
+.action-row,
+.toolbar-row{
+    min-width:0;
+}
+
+button{
+    white-space:nowrap;
+    min-width:0;
+}
+
+#auth-footer{
+    display:none;
+}
+
+}
 
 
 
