@@ -651,6 +651,9 @@ renderHistory();
 
       const row = document.createElement("div");
 
+      row.style.background = "red";
+row.style.color = "white"; 
+
       row.className = "history-item";
 
       row.textContent =
