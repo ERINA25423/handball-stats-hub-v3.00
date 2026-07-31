@@ -393,71 +393,89 @@ a{
 
 }
 
+
 /* ==========================================================
-   RECORD
+   RECORD HEADER v4
 ========================================================== */
 
-.record-container{
+#screen-record{
+
+    padding:10px;
     display:flex;
     flex-direction:column;
     gap:8px;
-    padding:10px;
-    height:100%;
-    box-sizing:border-box;
+
 }
 
-/* ---------- 上段 ---------- */
+/* ---------- Team ---------- */
 
-.team-row,
-.timer-row,
-.timer-button-row{
+.team-row{
+
     width:100%;
 }
 
 .team-toggle{
+
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:8px;
+    gap:6px;
+
 }
 
 .team-toggle button{
-    height:42px;
-    border-radius:12px;
+
+    height:40px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:700;
+
 }
 
+/* ---------- Timer ---------- */
+
 .timer-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
+
+    display:grid;
+    grid-template-columns:95px 1fr;
+    gap:8px;
+
 }
 
 .half-display{
-    width:110px;
-    height:44px;
+
+    height:42px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    border-radius:12px;
+    background:#1d2330;
+
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:700;
+
 }
 
 .match-timer{
 
-    flex:1;
-
-    height:44px;
+    height:42px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    font-size:30px;
-    font-weight:bold;
+    background:#1d2330;
 
-    border-radius:12px;
+    border-radius:10px;
+
+    font-size:30px;
+    font-weight:700;
+
 }
+
+/* ---------- Timer Buttons ---------- */
 
 .timer-button-row{
 
@@ -467,212 +485,27 @@ a{
     repeat(5,1fr);
 
     gap:6px;
+
 }
 
 .timer-button-row button{
 
-    height:34px;
-
-    font-size:15px;
-
-    border-radius:10px;
-
-}
-
-/* ---------- メイン ---------- */
-
-.record-main{
-
-    display:grid;
-
-    grid-template-columns:
-    1.2fr
-    1fr;
-
-    gap:10px;
-
-    flex:1;
-
-}
-
-/* POSITION */
-
-.position-panel{
-
-    border-radius:14px;
-
-    padding:10px;
-
-}
-
-.position-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:8px;
-
-}
-
-.position-grid button{
-
-    height:54px;
-
-    font-size:16px;
-
-}
-
-/* ---------- 右 ---------- */
-
-.right-panel{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
-
-}
-
-/* COURSE */
-
-.course-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:5px;
-
-}
-
-.course-grid button{
-
-    height:36px;
-
-}
-
-/* TYPE */
-
-.type-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:5px;
-
-}
-
-.type-grid button{
-
-    height:34px;
-
-    font-size:13px;
-
-}
-
-/* RESULT */
-
-.result-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:5px;
-
-}
-
-.result-grid button{
-
-    height:34px;
-
-    font-size:13px;
-
-}
-
-/* ---------- 下ボタン ---------- */
-
-.bottom-panel{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:6px;
-
-}
-
-.utility-row{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:6px;
-
-}
-
-.utility-btn{
-
     height:32px;
 
+    border-radius:8px;
+
     font-size:13px;
 
-}
-
-.action-row{
-
-    display:grid;
-
-    grid-template-columns:
-    1fr
-    1fr
-    1.2fr;
-
-    gap:6px;
+    font-weight:700;
 
 }
 
-.action-btn{
+#btn-start-stop{
 
-    height:42px;
-
-    font-size:14px;
-
-}
-
-/* ---------- 履歴 ---------- */
-
-.record-history{
-
-    max-height:120px;
-
-    overflow-y:auto;
-
-    border-radius:12px;
-
-    padding:8px;
+    background:#16a34a;
+    color:white;
 
 }
-
-.history-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:5px;
-
-}
-
 /* ===========================================================
    TOOLBAR
    =========================================================== */
