@@ -634,8 +634,6 @@ renderHistory();
 
 
       function renderHistory() {
-
-alert("append");
          
     const e = els();
 
