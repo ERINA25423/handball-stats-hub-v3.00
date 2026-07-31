@@ -61,302 +61,187 @@
   <!-- ============================================================ -->
 <section id="screen-record" class="screen">
 
-    <!-- ========================= -->
-    <!-- Header -->
-    <!-- ========================= -->
+  <div class="record-container">
 
-    <div class="record-header">
-
-        <h1 class="app-title">
-            Handball Stats Hub
-        </h1>
-
-        <div
-            class="half-label"
-            id="half-label">
-
-            1st Half
-
-        </div>
-
-    </div>
-
-    <!-- ========================= -->
     <!-- Team -->
-    <!-- ========================= -->
-
-    <div id="team-toggle">
-
-        <button
-            id="btn-team-my"
-            class="toolbar-btn active"
-            data-team="my">
-
-            MY TEAM
-
-        </button>
-
-        <button
-            id="btn-team-opponent"
-            class="toolbar-btn"
-            data-team="opponent">
-
-            OPPONENT
-
-        </button>
-
+    <div class="record-row team-row">
+      <div id="team-toggle" class="team-toggle">
+        <button data-team="my" class="active">MY TEAM</button>
+        <button data-team="opponent">OPPONENT</button>
+      </div>
     </div>
 
-    <!-- ========================= -->
     <!-- Timer -->
-    <!-- ========================= -->
+    <div class="record-row timer-row">
 
-    <div class="timer-area">
+      <div id="half-display" class="half-display">
+        1st Half
+      </div>
 
-        <div id="match-timer">
-
-            00:00
-
-        </div>
+      <div id="match-timer" class="match-timer">
+        00:00
+      </div>
 
     </div>
 
-    <!-- ========================= -->
     <!-- Timer Buttons -->
-    <!-- ========================= -->
+    <div class="record-row timer-button-row">
 
-    <div class="timer-buttons">
-
-        <button id="btn-minus10">
-            -10
-        </button>
-
-        <button id="btn-minus1">
-            -1
-        </button>
-
-        <button id="btn-start-timer">
-            START
-        </button>
-
-        <button id="btn-plus1">
-            +1
-        </button>
-
-        <button id="btn-plus10">
-            +10
-        </button>
+      <button id="btn-minus10">-10</button>
+      <button id="btn-minus1">-1</button>
+      <button id="btn-start-stop">START</button>
+      <button id="btn-plus1">+1</button>
+      <button id="btn-plus10">+10</button>
 
     </div>
 
-    <!-- ========================= -->
-    <!-- Main Grid -->
-    <!-- ========================= -->
+    <!-- Main -->
+    <div class="record-main">
 
-    <div class="record-grid">
-    
-        <!-- ====================================== -->
-    <!-- POSITION -->
-    <!-- ====================================== -->
-
-    <div class="record-column">
+      <!-- Position -->
+      <div class="position-panel">
 
         <h3>POSITION</h3>
 
-        <div class="position-panel">
+        <div class="position-grid">
 
-            <button class="position-btn" data-position="GK">
-                <span>GK</span>
-                <input
-                    class="number-input"
-                    data-number-position="GK"
-                    type="text"
-                    maxlength="2"
-                    inputmode="numeric"
-                    placeholder="#">
-            </button>
+          <!-- 1段目 -->
+          <button data-position="GK">GK</button>
+          <button data-position="LW">LW</button>
+          <button data-position="PV">PV</button>
+          <button data-position="RW">RW</button>
 
-            <button class="position-btn" data-position="EP">
-                <span>EP</span>
-                <input
-                    class="number-input"
-                    data-number-position="EP"
-                    type="text"
-                    maxlength="2"
-                    inputmode="numeric"
-                    placeholder="#">
-            </button>
-
-            <button class="position-btn" data-position="LW">
-                <span>LW</span>
-                <input class="number-input" data-number-position="LW" type="text" maxlength="2" inputmode="numeric" placeholder="#">
-            </button>
-
-            <button class="position-btn" data-position="PV">
-                <span>PV</span>
-                <input class="number-input" data-number-position="PV" type="text" maxlength="2" inputmode="numeric" placeholder="#">
-            </button>
-
-            <button class="position-btn" data-position="RW">
-                <span>RW</span>
-                <input class="number-input" data-number-position="RW" type="text" maxlength="2" inputmode="numeric" placeholder="#">
-            </button>
-
-            <button class="position-btn" data-position="LB">
-                <span>LB</span>
-                <input class="number-input" data-number-position="LB" type="text" maxlength="2" inputmode="numeric" placeholder="#">
-            </button>
-
-            <button class="position-btn" data-position="CB">
-                <span>CB</span>
-                <input class="number-input" data-number-position="CB" type="text" maxlength="2" inputmode="numeric" placeholder="#">
-            </button>
-
-            <button class="position-btn" data-position="RB">
-                <span>RB</span>
-                <input class="number-input" data-number-position="RB" type="text" maxlength="2" inputmode="numeric" placeholder="#">
-            </button>
+          <!-- 2段目 -->
+          <button data-position="EP">EP</button>
+          <button data-position="LB">LB</button>
+          <button data-position="CB">CB</button>
+          <button data-position="RB">RB</button>
 
         </div>
 
-    </div>
+      </div>
 
-    <!-- ====================================== -->
-    <!-- COURSE -->
-    <!-- ====================================== -->
-
-    <div class="record-column">
+      <!-- Right -->
+      <div class="right-panel">
+      <!-- COURSE -->
+      <div class="course-panel">
 
         <h3>COURSE</h3>
 
-        <div class="course-panel">
+        <div class="course-grid">
 
-            <button class="course-btn" data-course="LT">LT</button>
-            <button class="course-btn" data-course="CT">CT</button>
-            <button class="course-btn" data-course="RT">RT</button>
+          <button data-course="UL">UL</button>
+          <button data-course="UC">UC</button>
+          <button data-course="UR">UR</button>
 
-            <button class="course-btn" data-course="LM">LM</button>
-            <button class="course-btn" data-course="CM">CM</button>
-            <button class="course-btn" data-course="RM">RM</button>
+          <button data-course="ML">ML</button>
+          <button data-course="MC">MC</button>
+          <button data-course="MR">MR</button>
 
-            <button class="course-btn" data-course="LB9">LB</button>
-            <button class="course-btn" data-course="CB9">CB</button>
-            <button class="course-btn" data-course="RB9">RB</button>
-
-        </div>
-
-    </div>
-    
-        <!-- ====================================== -->
-    <!-- SHOT TYPE -->
-    <!-- ====================================== -->
-
-    <div class="record-column">
-
-        <h3>TYPE</h3>
-
-        <div class="type-panel">
-
-            <button class="type-btn" data-shot-type="Normal">
-                Normal
-            </button>
-
-            <button class="type-btn" data-shot-type="Fast Break">
-                Fast Break
-            </button>
-
-            <button class="type-btn" data-shot-type="7m">
-                7m
-            </button>
+          <button data-course="LL">LL</button>
+          <button data-course="LC">LC</button>
+          <button data-course="LR">LR</button>
 
         </div>
 
-    </div>
+      </div>
 
-    <!-- ====================================== -->
-    <!-- RESULT -->
-    <!-- ====================================== -->
+      <!-- TYPE -->
+      <div class="type-panel">
 
-    <div class="record-column">
+        <h3>SHOT TYPE</h3>
+
+        <div class="type-grid">
+
+          <button data-shot-type="jump">Jump</button>
+          <button data-shot-type="standing">Standing</button>
+          <button data-shot-type="wing">Wing</button>
+
+          <button data-shot-type="lob">Lob</button>
+          <button data-shot-type="spin">Spin</button>
+          <button data-shot-type="7m">7m</button>
+
+        </div>
+
+      </div>
+
+      <!-- RESULT -->
+      <div class="result-panel">
 
         <h3>RESULT</h3>
 
-        <div class="result-panel">
+        <div class="result-grid">
 
-            <button class="result-btn result-goal" data-result="GOAL">
-                GOAL
-            </button>
+          <button data-result="goal">GOAL</button>
+          <button data-result="save">SAVE</button>
 
-            <button class="result-btn result-saved" data-result="SAVED">
-                SAVED
-            </button>
+          <button data-result="miss">MISS</button>
+          <button data-result="block">BLOCK</button>
 
-            <button class="result-btn result-miss" data-result="MISS">
-                MISS
-            </button>
-
-            <button class="result-btn result-block" data-result="BLOCK">
-                BLOCK
-            </button>
+          <button data-result="post">POST</button>
+          <button data-result="foul">FOUL</button>
 
         </div>
 
-    </div>
-
-</div>
-
-<!-- ====================================== -->
-<!-- Bottom Controls -->
-<!-- ====================================== -->
-
-<div class="bottom-controls">
-
-    <div class="utility-buttons">
-
-        <button id="btn-other">
-            OTHER
-        </button>
-
-        <button id="btn-history">
-            HISTORY
-        </button>
-
-        <button id="btn-undo">
-            UNDO
-        </button>
+      </div>
 
     </div>
 
-    <button id="btn-change-half">
-        CHANGE HALF
-    </button>
+  </div>
 
-    <button id="btn-save-event">
-        SAVE EVENT
-    </button>
+    <!-- Bottom Buttons -->
+    <div class="bottom-panel">
 
-    <button id="btn-end-match">
-        END & SAVE MATCH
-    </button>
+      <div class="utility-row">
 
-</div>
+        <button id="btn-other" class="utility-btn">
+          OTHER
+        </button>
 
-<!-- ====================================== -->
-<!-- Match History -->
-<!-- ====================================== -->
+        <button id="btn-history" class="utility-btn">
+          HISTORY
+        </button>
 
-<div class="record-history">
+        <button id="btn-undo" class="utility-btn">
+          UNDO
+        </button>
 
-    <div
-        id="history-list-record"
-        class="history-list">
+      </div>
+
+      <div class="action-row">
+
+        <button id="btn-change-half" class="action-btn half-btn">
+          CHANGE HALF
+        </button>
+
+        <button id="btn-save-event" class="action-btn save-btn">
+          SAVE EVENT
+        </button>
+
+        <button id="btn-end-match" class="action-btn end-btn">
+          END &amp; SAVE MATCH
+        </button>
+
+      </div>
 
     </div>
 
-</div>
+    <!-- Match History -->
+    <div class="record-history">
+
+      <h3>MATCH HISTORY</h3>
+
+      <div id="history-list-record" class="history-list">
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
-    
+
+
+
   <!-- ============================================================ -->
   <!-- SCREEN 4: MATCH HISTORY LIST                                  -->
   <!-- ============================================================ -->
