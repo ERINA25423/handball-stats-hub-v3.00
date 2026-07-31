@@ -563,42 +563,6 @@ a{
 
 }
 
-/* ===========================================================
-   RECORD GRID
-   =========================================================== */
-
-.record-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        2fr
-        1.35fr
-        .85fr
-        .85fr;
-
-    gap:10px;
-
-    align-items:start;
-
-}
-
-.panel-position{
-    min-height:390px;
-}
-
-.panel-course{
-    min-height:390px;
-}
-
-.panel-type{
-    min-height:390px;
-}
-
-.panel-result{
-    min-height:390px;
-}
-
     
 
 /* ===========================================================
@@ -1898,512 +1862,605 @@ input:focus-visible{
 }
 
 /* ==========================================================
-   RECORD SCREEN v3.00 (Portrait Only)
-   Part 1
+   RECORD SCREEN v4.0
+   Part 1 / 5
+   Container + Team + Timer + Layout
 ========================================================== */
 
 #screen-record{
     display:flex;
     flex-direction:column;
-    gap:16px;
-    padding:16px;
-    width:100%;
     height:100vh;
-    overflow:hidden;
-    background:#11151d;
-}
-
-/* ---------- Title ---------- */
-
-#screen-record h1{
-    font-size:2rem;
-    font-weight:700;
-    text-align:center;
-    margin:0;
-}
-
-/* ---------- Team ---------- */
-
-#team-toggle{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-#team-toggle button{
-    height:60px;
-    font-size:1.2rem;
-    font-weight:700;
-    border-radius:16px;
-}
-
-/* ---------- Timer ---------- */
-
-.timer-area{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-#match-timer{
-    width:100%;
-    height:72px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:2.3rem;
-    font-weight:bold;
-
-    border-radius:18px;
-
-    background:#202633;
-}
-
-/* ---------- Timer Buttons ---------- */
-
-.timer-buttons{
-    display:grid;
-    grid-template-columns:
-        repeat(5,1fr);
-
+    padding:10px;
     gap:10px;
+    background:#111827;
+    overflow:hidden;
 }
 
-.timer-buttons button{
-
-    height:58px;
-
-    border-radius:16px;
-
-    font-size:1.15rem;
-
-    font-weight:700;
-}
-
-/* STARTだけ緑 */
-
-#btn-start-timer{
-    background:#1fa53a;
-    color:#fff;
-}
-
-/* ---------- Half ---------- */
-
-#btn-change-half{
-    align-self:flex-end;
-
-    width:110px;
-    height:48px;
-
-    border-radius:24px;
-
-    font-weight:700;
-}
-
-/* ==========================================================
-   RECORD SCREEN v3.00
-   Part 2
-   Position Area
-========================================================== */
-
-/* メイン入力エリア */
-
-.record-grid{
-    display:grid;
-    grid-template-columns:
-        1.35fr
-        1fr
-        1fr
-        1fr;
-
-    gap:12px;
-
+.record-container{
+    display:flex;
+    flex-direction:column;
     flex:1;
-
+    gap:10px;
     min-height:0;
 }
 
-/* ---------- 共通 ---------- */
+/* =========================
+   TEAM
+========================= */
 
-.record-column{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
+.team-row{
+    flex:0 0 auto;
 }
 
-.record-column h3{
-
-    text-align:center;
-
-    font-size:0.95rem;
-
-    margin:0;
-
-    padding:8px;
-
-    background:#202633;
-
-    border-radius:10px;
-}
-
-/* ---------- Position ---------- */
-
-.position-panel{
-
+.team-toggle{
     display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
 
-    grid-template-columns:
-        repeat(2,1fr);
+.team-toggle button{
+    height:42px;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:700;
+    background:#273449;
+    color:#fff;
+    transition:.2s;
+}
 
+.team-toggle button.active{
+    background:#2563eb;
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer-row{
+    display:grid;
+    grid-template-columns:110px 1fr;
     gap:10px;
-
-    flex:1;
-}
-
-/* ボタン */
-
-.position-btn{
-
-    display:flex;
-
-    flex-direction:column;
-
     align-items:center;
-
-    justify-content:center;
-
-    gap:6px;
-
-    min-height:72px;
-
-    border-radius:14px;
-
-    background:#232b38;
 }
 
-/* ポジション名 */
+.half-display{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:48px;
+    background:#1f2937;
+    border-radius:10px;
+    font-weight:700;
+    color:#fff;
+}
 
-.position-btn span{
+.match-timer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:48px;
+    border-radius:10px;
+    background:#111827;
+    border:2px solid #334155;
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+}
 
-    font-size:1rem;
+.timer-button-row{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:6px;
+}
 
+.timer-button-row button{
+    height:38px;
+    border:none;
+    border-radius:8px;
+    background:#334155;
+    color:#fff;
     font-weight:700;
 }
 
-/* 背番号入力 */
+/* =========================
+   MAIN AREA
+========================= */
 
-.position-btn input{
+.record-main{
+    flex:1;
+    min-height:0;
 
-    width:80%;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:10px;
+}
 
-    height:34px;
+.position-panel,
+.course-panel,
+.type-panel,
+.result-panel{
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+    background:#1f2937;
+    border-radius:12px;
+    padding:8px;
+}
 
-    border:none;
-
-    border-radius:8px;
-
+.position-panel h3,
+.course-panel h3,
+.type-panel h3,
+.result-panel h3{
+    margin:0 0 8px;
     text-align:center;
-
-    font-size:1rem;
-
-    font-weight:bold;
-
-    background:#fff;
-
-    color:#000;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
 }
 
-/* 選択中 */
-
-.position-btn.active{
-
-    background:#2e6bff;
+.right-panel{
+    display:grid;
+    grid-template-rows:1.2fr .9fr .9fr;
+    gap:10px;
+    min-height:0;
 }
-
-/* GK・EPも同じサイズ */
-
-.position-btn.gk,
-.position-btn.ep{
-
-    min-height:72px;
-}
-
 
 /* ==========================================================
-   RECORD SCREEN v3.00
-   Part 3
-   COURSE / TYPE / RESULT
+   RECORD SCREEN v4.0
+   Part 2 / 5
+   POSITION + COURSE
 ========================================================== */
 
-/* ---------- COURSE ---------- */
+/* =========================
+   POSITION
+========================= */
+
+.position-grid{
+    flex:1;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(2,1fr);
+    gap:8px;
+}
+
+.position-grid button{
+    border:none;
+    border-radius:10px;
+    background:#334155;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.position-grid button:hover{
+    background:#475569;
+}
+
+.position-grid button.active{
+    background:#2563eb;
+    color:#fff;
+}
+
+/* =========================
+   COURSE
+========================= */
 
 .course-panel{
+    min-height:0;
+}
+
+.course-grid{
+    flex:1;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
     grid-template-rows:repeat(3,1fr);
-    gap:8px;
-
-    flex:1;
+    gap:6px;
 }
 
-.course-btn{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    min-height:60px;
-
-    border-radius:12px;
-
-    background:#232b38;
-
-    font-size:0.95rem;
+.course-grid button{
+    border:none;
+    border-radius:8px;
+    background:#334155;
+    color:#fff;
+    font-size:14px;
     font-weight:700;
-
-    transition:.15s;
+    transition:.2s;
 }
 
-.course-btn.active{
-    background:#2e6bff;
+.course-grid button:hover{
+    background:#475569;
 }
 
-
-/* ---------- SHOT TYPE ---------- */
-
-.type-panel{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:10px;
-
-    flex:1;
-}
-
-.type-btn{
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    min-height:60px;
-
-    border-radius:12px;
-
-    background:#232b38;
-
-    font-size:0.95rem;
-
-    font-weight:700;
-}
-
-.type-btn.active{
-
-    background:#6a4cff;
-}
-
-
-/* ---------- RESULT ---------- */
-
-.result-panel{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:10px;
-
-    flex:1;
-}
-
-.result-btn{
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    min-height:60px;
-
-    border-radius:12px;
-
-    font-size:1rem;
-
-    font-weight:bold;
-
+.course-grid button.active{
+    background:#16a34a;
     color:#fff;
 }
-
-/* 色分け */
-
-.result-btn.goal{
-    background:#2fb344;
-}
-
-.result-btn.save{
-    background:#1971c2;
-}
-
-.result-btn.miss{
-    background:#d9480f;
-}
-
-.result-btn.block{
-    background:#7048e8;
-}
-
-.result-btn.active{
-    transform:scale(0.96);
-}
-
 
 /* ==========================================================
-   RECORD SCREEN v3.00
-   Part 4
-   Bottom Controls
+   RECORD SCREEN v4.0
+   Part 3 / 5
+   SHOT TYPE + RESULT
 ========================================================== */
 
-/* ---------- 下部全体 ---------- */
+/* =========================
+   SHOT TYPE
+========================= */
 
-.bottom-controls{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-    margin-top:12px;
+.type-panel{
+    min-height:0;
 }
 
-/* ---------- OTHER HISTORY UNDO ---------- */
-
-.utility-buttons{
+.type-grid{
+    flex:1;
 
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
-    gap:10px;
+    grid-template-rows:repeat(2,1fr);
+    gap:6px;
 }
 
-.utility-buttons button{
+.type-grid button{
+    border:none;
+    border-radius:8px;
+    background:#334155;
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    padding:4px;
+    transition:.2s;
+}
 
-    height:50px;
+.type-grid button:hover{
+    background:#475569;
+}
 
+.type-grid button.active{
+    background:#2563eb;
+    color:#fff;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+.result-panel{
+    min-height:0;
+}
+
+.result-grid{
+    flex:1;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(3,1fr);
+    gap:6px;
+}
+
+.result-grid button{
+    border:none;
+    border-radius:8px;
+    background:#334155;
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    padding:4px;
+    transition:.2s;
+}
+
+.result-grid button:hover{
+    background:#475569;
+}
+
+.result-grid button.active{
+    background:#dc2626;
+    color:#fff;
+}
+
+/* ボタンの色分け */
+
+.result-grid button[data-result="goal"]{
+    background:#16a34a;
+}
+
+.result-grid button[data-result="save"]{
+    background:#2563eb;
+}
+
+.result-grid button[data-result="miss"]{
+    background:#dc2626;
+}
+
+.result-grid button[data-result="block"]{
+    background:#ea580c;
+}
+
+.result-grid button[data-result="post"]{
+    background:#ca8a04;
+}
+
+.result-grid button[data-result="foul"]{
+    background:#7c3aed;
+}
+
+/* ==========================================================
+   RECORD SCREEN v4.0
+   Part 4 / 5
+   BOTTOM PANEL
+========================================================== */
+
+/* =========================
+   BOTTOM PANEL
+========================= */
+
+.bottom-panel{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+/* =========================
+   UTILITY BUTTONS
+========================= */
+
+.utility-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.utility-btn{
+    height:42px;
+    border:none;
+    border-radius:10px;
+    background:#334155;
+    color:#fff;
+    font-size:14px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.utility-btn:hover{
+    background:#475569;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.action-row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1.35fr;
+    gap:8px;
+}
+
+.action-btn{
+    height:48px;
+    border:none;
+    border-radius:10px;
+    color:#fff;
+    font-size:14px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.half-btn{
+    background:#6366f1;
+}
+
+.save-btn{
+    background:#16a34a;
+}
+
+.end-btn{
+    background:#dc2626;
+}
+
+.action-btn:hover{
+    filter:brightness(1.08);
+}
+
+/* =========================
+   MATCH HISTORY
+========================= */
+
+.record-history{
+    display:flex;
+    flex-direction:column;
+    min-height:160px;
+    max-height:200px;
+    background:#1f2937;
     border-radius:12px;
-
-    font-size:.95rem;
-
-    font-weight:700;
+    padding:10px;
 }
 
-/* ---------- CHANGE HALF ---------- */
-
-#btn-change-half{
-
-    width:100%;
-
-    height:54px;
-
-    border-radius:14px;
-
-    font-size:1rem;
-
-    font-weight:700;
-
-    background:#ffb300;
-
-    color:#111;
-}
-
-/* ---------- SAVE EVENT ---------- */
-
-#btn-save-event{
-
-    width:100%;
-
-    height:64px;
-
-    border:none;
-
-    border-radius:16px;
-
-    font-size:1.2rem;
-
-    font-weight:700;
-
-    background:#1976d2;
-
+.record-history h3{
+    margin:0 0 8px;
+    text-align:center;
     color:#fff;
-}
-
-/* ---------- END MATCH ---------- */
-
-#btn-end-match{
-
-    width:100%;
-
-    height:70px;
-
-    border:none;
-
-    border-radius:18px;
-
-    font-size:1.2rem;
-
+    font-size:14px;
     font-weight:700;
+}
 
-    background:#d32f2f;
+#history-list-record{
+    flex:1;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    padding-right:4px;
+}
 
+#history-list-record::-webkit-scrollbar{
+    width:6px;
+}
+
+#history-list-record::-webkit-scrollbar-thumb{
+    background:#475569;
+    border-radius:999px;
+}
+
+#history-list-record .history-item{
+    padding:8px;
+    border-radius:8px;
+    background:#334155;
     color:#fff;
+    font-size:12px;
+    line-height:1.4;
 }
 
-/* ---------- 押した時 ---------- */
+/* ==========================================================
+   RECORD SCREEN v4.0
+   Part 5 / 5
+   Responsive & Finish
+========================================================== */
 
-button{
+/* ボタン共通 */
 
-    transition:.15s;
+.position-grid button,
+.course-grid button,
+.type-grid button,
+.result-grid button,
+.utility-btn,
+.action-btn,
+.timer-button-row button,
+.team-toggle button{
+    cursor:pointer;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
 }
+
+/* 選択状態 */
+
+.position-grid button.active,
+.course-grid button.active,
+.type-grid button.active,
+.result-grid button.active{
+    box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,.9),
+        0 0 10px rgba(255,255,255,.15);
+}
+
+/* フォーカス */
+
+button:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:2px;
+}
+
+/* 押下時 */
 
 button:active{
-
     transform:scale(.97);
 }
 
-/* ---------- 小さい画面対策 ---------- */
+/* タイトルの高さを統一 */
 
-@media (max-height:700px){
+.position-panel h3,
+.course-panel h3,
+.type-panel h3,
+.result-panel h3,
+.record-history h3{
+    height:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    letter-spacing:.4px;
+}
 
-    .utility-buttons button{
+/* スマホ最適化 */
 
+@media (max-width:480px){
+
+    #screen-record{
+        padding:8px;
+        gap:8px;
+    }
+
+    .record-container{
+        gap:8px;
+    }
+
+    .record-main{
+        gap:8px;
+        grid-template-columns:1.15fr .85fr;
+    }
+
+    .right-panel{
+        gap:8px;
+    }
+
+    .position-panel,
+    .course-panel,
+    .type-panel,
+    .result-panel{
+        padding:6px;
+    }
+
+    .position-grid{
+        gap:6px;
+    }
+
+    .course-grid,
+    .type-grid,
+    .result-grid{
+        gap:5px;
+    }
+
+    .position-grid button{
+        font-size:15px;
+    }
+
+    .course-grid button,
+    .type-grid button,
+    .result-grid button{
+        font-size:12px;
+    }
+
+    .match-timer{
+        font-size:24px;
+    }
+
+    .half-display{
+        font-size:13px;
+    }
+
+    .timer-button-row button{
+        height:34px;
+        font-size:12px;
+    }
+
+    .utility-btn{
+        height:38px;
+        font-size:12px;
+    }
+
+    .action-btn{
         height:44px;
+        font-size:12px;
     }
 
-    #btn-change-half{
-
-        height:48px;
-    }
-
-    #btn-save-event{
-
-        height:56px;
-    }
-
-    #btn-end-match{
-
-        height:62px;
+    .record-history{
+        min-height:140px;
+        max-height:180px;
     }
 }
 
+/* タブレット */
+
+@media (min-width:768px){
+
+    #screen-record{
+        max-width:700px;
+        margin:auto;
+    }
+
+}
 
 /* ==========================================================
    RECORD DESIGN
