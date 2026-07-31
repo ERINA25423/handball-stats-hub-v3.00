@@ -59,125 +59,271 @@
   <!-- ============================================================ -->
   <!-- SCREEN 3: RECORD (LIVE MATCH INPUT)                           -->
   <!-- ============================================================ -->
-  <section id="screen-record" class="screen">
+<section id="screen-record" class="screen">
 
-    <div class="record-grid">
-      <h1 class="app-title">Handball Stats Hub</h1>
-      <div class="half-label" id="half-label">1st Half</div>
-      <div class="timer-display" id="match-timer">00:00</div>
-    </header>
+    <!-- ========================= -->
+    <!-- Header -->
+    <!-- ========================= -->
 
-    <div class="toolbar-row">
-      <div id="team-toggle">
-      <button class="toolbar-btn active" id="btn-team-my" data-team="my">MY TEAM</button>
-      <button class="toolbar-btn" id="btn-team-opponent" data-team="opponent">OPPONENT</button>
-      </div>
-      <div class="timer-buttons">
+    <div class="record-header">
 
-    <button>-10</button>
+        <h1 class="app-title">
+            Handball Stats Hub
+        </h1>
 
-    <button>-1</button>
+        <div
+            class="half-label"
+            id="half-label">
 
-    <button id="btn-start-timer">
-        START
-    </button>
+            1st Half
 
-    <button>+1</button>
+        </div>
 
-    <button>+10</button>
-
-</div>
     </div>
 
+    <!-- ========================= -->
+    <!-- Team -->
+    <!-- ========================= -->
+
+    <div id="team-toggle">
+
+        <button
+            id="btn-team-my"
+            class="toolbar-btn active"
+            data-team="my">
+
+            MY TEAM
+
+        </button>
+
+        <button
+            id="btn-team-opponent"
+            class="toolbar-btn"
+            data-team="opponent">
+
+            OPPONENT
+
+        </button>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Timer -->
+    <!-- ========================= -->
+
+    <div class="timer-area">
+
+        <div id="match-timer">
+
+            00:00
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Timer Buttons -->
+    <!-- ========================= -->
+
+    <div class="timer-buttons">
+
+        <button id="btn-minus10">
+            -10
+        </button>
+
+        <button id="btn-minus1">
+            -1
+        </button>
+
+        <button id="btn-start-timer">
+            START
+        </button>
+
+        <button id="btn-plus1">
+            +1
+        </button>
+
+        <button id="btn-plus10">
+            +10
+        </button>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- Main Grid -->
+    <!-- ========================= -->
+
     <div class="record-grid">
+    
+        <!-- ====================================== -->
+    <!-- POSITION -->
+    <!-- ====================================== -->
 
-      <!-- POSITION -->
-      <div class="record-column">
+    <div class="record-column">
+
         <h3>POSITION</h3>
-<div class="position-panel">
-        <div class="position-grid" id="position-grid">
-          <button class="position-btn" data-position="LW">
-            <span class="position-label">LW</span>
-            <input type="text" class="number-input" data-number-position="LW" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
-          <button class="position-btn" data-position="PV">
-            <span class="position-label">PV</span>
-            <input type="text" class="number-input" data-number-position="PV" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
-          <button class="position-btn" data-position="RW">
-            <span class="position-label">RW</span>
-            <input type="text" class="number-input" data-number-position="RW" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
-          <button class="position-btn" data-position="LB">
-            <span class="position-label">LB</span>
-            <input type="text" class="number-input" data-number-position="LB" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
-          <button class="position-btn" data-position="CB">
-            <span class="position-label">CB</span>
-            <input type="text" class="number-input" data-number-position="CB" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
-          <button class="position-btn" data-position="RB">
-            <span class="position-label">RB</span>
-            <input type="text" class="number-input" data-number-position="RB" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
-          <button class="position-btn" data-position="GK">
-            <span class="position-label">GK</span>
-            <input type="text" class="number-input" data-number-position="GK" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
-          <button class="position-btn" data-position="EP">
-            <span class="position-label">EP</span>
-            <input type="text" class="number-input" data-number-position="EP" placeholder="#" inputmode="numeric" maxlength="2" />
-          </button>
+
+        <div class="position-panel">
+
+            <button class="position-btn" data-position="GK">
+                <span>GK</span>
+                <input
+                    class="number-input"
+                    data-number-position="GK"
+                    type="text"
+                    maxlength="2"
+                    inputmode="numeric"
+                    placeholder="#">
+            </button>
+
+            <button class="position-btn" data-position="EP">
+                <span>EP</span>
+                <input
+                    class="number-input"
+                    data-number-position="EP"
+                    type="text"
+                    maxlength="2"
+                    inputmode="numeric"
+                    placeholder="#">
+            </button>
+
+            <button class="position-btn" data-position="LW">
+                <span>LW</span>
+                <input class="number-input" data-number-position="LW" type="text" maxlength="2" inputmode="numeric" placeholder="#">
+            </button>
+
+            <button class="position-btn" data-position="PV">
+                <span>PV</span>
+                <input class="number-input" data-number-position="PV" type="text" maxlength="2" inputmode="numeric" placeholder="#">
+            </button>
+
+            <button class="position-btn" data-position="RW">
+                <span>RW</span>
+                <input class="number-input" data-number-position="RW" type="text" maxlength="2" inputmode="numeric" placeholder="#">
+            </button>
+
+            <button class="position-btn" data-position="LB">
+                <span>LB</span>
+                <input class="number-input" data-number-position="LB" type="text" maxlength="2" inputmode="numeric" placeholder="#">
+            </button>
+
+            <button class="position-btn" data-position="CB">
+                <span>CB</span>
+                <input class="number-input" data-number-position="CB" type="text" maxlength="2" inputmode="numeric" placeholder="#">
+            </button>
+
+            <button class="position-btn" data-position="RB">
+                <span>RB</span>
+                <input class="number-input" data-number-position="RB" type="text" maxlength="2" inputmode="numeric" placeholder="#">
+            </button>
+
         </div>
-      </div>
 
-      <!-- SHOT COURSE -->
-      <div class="record-column">
-<h3>COURSE</h3>
-<div class="course-panel">
-        <div class="course-grid" id="course-grid">
-          <button class="course-btn" data-course="LT">LT</button>
-          <button class="course-btn" data-course="CT">CT</button>
-          <button class="course-btn" data-course="RT">RT</button>
-          <button class="course-btn" data-course="LM">LM</button>
-          <button class="course-btn" data-course="CM">CM</button>
-          <button class="course-btn" data-course="RM">RM</button>
-          <button class="course-btn" data-course="LB9">LB</button>
-          <button class="course-btn" data-course="CB9">CB</button>
-          <button class="course-btn" data-course="RB9">RB</button>
+    </div>
+
+    <!-- ====================================== -->
+    <!-- COURSE -->
+    <!-- ====================================== -->
+
+    <div class="record-column">
+
+        <h3>COURSE</h3>
+
+        <div class="course-panel">
+
+            <button class="course-btn" data-course="LT">LT</button>
+            <button class="course-btn" data-course="CT">CT</button>
+            <button class="course-btn" data-course="RT">RT</button>
+
+            <button class="course-btn" data-course="LM">LM</button>
+            <button class="course-btn" data-course="CM">CM</button>
+            <button class="course-btn" data-course="RM">RM</button>
+
+            <button class="course-btn" data-course="LB9">LB</button>
+            <button class="course-btn" data-course="CB9">CB</button>
+            <button class="course-btn" data-course="RB9">RB</button>
+
         </div>
-      </div>
 
-      <!-- SHOT TYPE -->
-      <div class="record-column">
-<h3>TYPE</h3><div class="type-panel">
-        <button class="type-btn" data-shot-type="Normal">Normal</button>
-        <button class="type-btn" data-shot-type="Fast Break">Fast Break</button>
-        <button class="type-btn" data-shot-type="7m">7m</button>
-      </div>
+    </div>
+    
+        <!-- ====================================== -->
+    <!-- SHOT TYPE -->
+    <!-- ====================================== -->
 
-      <!-- RESULT -->
-      <div class="record-column">
+    <div class="record-column">
 
-<h3>RESULT</h3>
+        <h3>TYPE</h3>
 
-<div class="result-panel">
-        <button class="result-btn result-goal" data-result="GOAL">GOAL</button>
-        <button class="result-btn result-saved" data-result="SAVED">SAVED</button>
-        <button class="result-btn result-miss" data-result="MISS">MISS</button>
-        <button class="result-btn result-block" data-result="BLOCK">BLOCK</button>
-      </div>
+        <div class="type-panel">
 
-    <div class="action-row">
-     <div class="bottom-controls">
+            <button class="type-btn" data-shot-type="Normal">
+                Normal
+            </button>
+
+            <button class="type-btn" data-shot-type="Fast Break">
+                Fast Break
+            </button>
+
+            <button class="type-btn" data-shot-type="7m">
+                7m
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ====================================== -->
+    <!-- RESULT -->
+    <!-- ====================================== -->
+
+    <div class="record-column">
+
+        <h3>RESULT</h3>
+
+        <div class="result-panel">
+
+            <button class="result-btn result-goal" data-result="GOAL">
+                GOAL
+            </button>
+
+            <button class="result-btn result-saved" data-result="SAVED">
+                SAVED
+            </button>
+
+            <button class="result-btn result-miss" data-result="MISS">
+                MISS
+            </button>
+
+            <button class="result-btn result-block" data-result="BLOCK">
+                BLOCK
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ====================================== -->
+<!-- Bottom Controls -->
+<!-- ====================================== -->
+
+<div class="bottom-controls">
 
     <div class="utility-buttons">
 
-        <button>OTHER</button>
+        <button id="btn-other">
+            OTHER
+        </button>
 
-        <button>HISTORY</button>
+        <button id="btn-history">
+            HISTORY
+        </button>
 
-        <button>UNDO</button>
+        <button id="btn-undo">
+            UNDO
+        </button>
 
     </div>
 
@@ -195,12 +341,22 @@
 
 </div>
 
-    <div class="record-history">
-      <div id="history-list" class="history-list"></div>
+<!-- ====================================== -->
+<!-- Match History -->
+<!-- ====================================== -->
+
+<div class="record-history">
+
+    <div
+        id="history-list-record"
+        class="history-list">
+
     </div>
 
-  </section>
+</div>
 
+</section>
+    
   <!-- ============================================================ -->
   <!-- SCREEN 4: MATCH HISTORY LIST                                  -->
   <!-- ============================================================ -->
