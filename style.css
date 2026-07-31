@@ -531,7 +531,7 @@ a{
 }
 
 .panel-position{
-    min-height390px;
+    min-height:390px;
 }
 
 .panel-course{
