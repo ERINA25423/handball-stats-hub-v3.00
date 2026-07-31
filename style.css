@@ -84,7 +84,7 @@ body{
 }
 
 .screen.active{
-    display:block;
+    display:flex;
 }
 
 /* ---------- TYPOGRAPHY ---------- */
@@ -1868,7 +1868,6 @@ input:focus-visible{
 ========================================================== */
 
 #screen-record{
-    display:flex;
     flex-direction:column;
     height:100vh;
     padding:10px;
