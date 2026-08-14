@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Handball Stats Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="js/app.js"></script>
+    <script defer src="js/storage.js"></script>
+</head>
+
+<body>
+
+<header class="top-bar">
+
+    <div class="logo">
+
+        <h1>Handball Stats Hub</h1>
+
+        <p>
+            Match Analysis System
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="home-container">
+
+    <section class="hero">
+
+        <h2>
+            ハンドボール分析アプリ
+        </h2>
+
+        <p>
+            試合入力・ランニングスコア・分析を
+            ひとつのアプリで管理
+        </p>
+
+    </section>
+
+
+    <section class="menu-grid">
+
+        <button
+            class="menu-card"
+            onclick="location.href='match.html'">
+
+            <div class="icon">
+
+                🏟
+
+            </div>
+
+            <h3>
+
+                新規試合
+
+            </h3>
+
+            <p>
+
+                試合を開始する
+
+            </p>
+
+        </button>
+
+
+        <button
+            class="menu-card"
+            onclick="location.href='matches.html'">
+
+            <div class="icon">
+
+                📋
+
+            </div>
+
+            <h3>
+
+                試合一覧
+
+            </h3>
+
+            <p>
+
+                保存した試合を見る
+
+            </p>
+
+        </button>
+
+
+        <button
+            class="menu-card"
+            onclick="location.href='players.html'">
+
+            <div class="icon">
+
+                👤
+
+            </div>
+
+            <h3>
+
+                選手管理
+
+            </h3>
+
+            <p>
+
+                選手を登録・編集
+
+            </p>
+
+        </button>
+
+              <button
+            class="menu-card"
+            onclick="location.href='teams.html'">
+
+            <div class="icon">
+                TEAM
+            </div>
+
+            <h3>
+                チーム管理
+            </h3>
+
+            <p>
+                チーム情報を管理
+            </p>
+
+        </button>
+
+
+        <button
+            class="menu-card"
+            onclick="location.href='analysis.html'">
+
+            <div class="icon">
+                DATA
+            </div>
+
+            <h3>
+                分析
+            </h3>
+
+            <p>
+                試合データを分析
+            </p>
+
+        </button>
+
+
+        <button
+            class="menu-card"
+            onclick="location.href='settings.html'">
+
+            <div class="icon">
+                SET
+            </div>
+
+            <h3>
+                設定
+            </h3>
+
+            <p>
+                アプリの設定
+            </p>
+
+        </button>
+
+    </section>
+
+
+    <section class="recent-section">
+
+        <div class="section-header">
+
+            <h2>
+                最近の試合
+            </h2>
+
+            <button
+                class="text-button"
+                onclick="location.href='matches.html'">
+
+                すべて見る
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="recentMatches"
+            class="recent-matches">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    MATCH
+                </div>
+
+                <h3>
+                    試合記録がありません
+                </h3>
+
+                <p>
+                    「新規試合」から試合を開始してください。
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="app-footer">
+
+    <p>
+        Handball Stats Hub
+    </p>
+
+    <p>
+        Handball Match Analysis System
+    </p>
+
+</footer>
+
+</body>
+</html>
+
