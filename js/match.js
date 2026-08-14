@@ -85,22 +85,105 @@ function setupEventListeners() {
 
 
     document
-        .querySelectorAll("[data-player]")
-        .forEach(button => {
+    .querySelectorAll(".position-player-card")
+    .forEach(card => {
 
-            button.addEventListener(
-                "click",
-                () => {
+        card.addEventListener("click", () => {
 
-                    selectPlayer(
-                        button.dataset.player
-                    );
+            const position =
+                card.querySelector(".position-label")
+                    ?.textContent
+                    .trim();
 
-                }
+            if (!position) {
+                return;
+            }
+
+            selectPositionPlayer(
+                position,
+                card
             );
 
         });
 
+    });
+
+
+document
+    .querySelectorAll(".player-number-input")
+    .forEach(input => {
+
+        input.addEventListener("input", () => {
+
+            const position =
+                input.dataset.positionPlayer;
+
+            if (
+                selectedPosition === position
+            ) {
+
+                selectedPlayer =
+                    input.value.trim();
+
+                updateStatusDisplay();
+
+            }
+
+        });
+
+    });
+
+   
+    document
+        .querySelectorAll(
+            ".position-player-card"
+        )
+        .forEach(item => {
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
+    card.classList.add("active");
+
+    updateStatusDisplay();
+}
+
+function selectPositionPlayer(
+    position,
+    card
+) {
+
+    selectedPosition = position;
+
+    const input =
+        card.querySelector(
+            ".player-number-input"
+        );
+
+    selectedPlayer =
+        input
+            ? input.value.trim()
+            : "";
+
+    document
+        .querySelectorAll(
+            ".position-player-card"
+        )
+        .forEach(item => {
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
+    card.classList.add("active");
+
+    updateStatusDisplay();
+}
 
     document
         .querySelectorAll("[data-position]")
