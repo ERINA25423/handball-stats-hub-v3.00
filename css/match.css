@@ -583,3 +583,143 @@
     color: #94a3b8;
     font-size: 11px;
 }
+
+/* =========================
+   試合入力画面・タブレット調整
+========================= */
+
+@media (min-width: 700px) {
+
+    .match-container {
+        width: min(1100px, calc(100% - 32px));
+    }
+
+    .match-card {
+        padding: 24px 28px;
+    }
+
+    .position-player-grid {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .shot-course-grid {
+        max-width: 500px;
+    }
+
+}
+
+
+/* =========================
+   iPad 横向き入力
+========================= */
+
+@media (min-width: 900px) {
+
+    .match-container {
+        width: min(1200px, calc(100% - 40px));
+    }
+
+    .match-card {
+        padding: 24px 32px;
+    }
+
+    .input-section {
+        margin-top: 24px;
+    }
+
+    .position-player-grid {
+        max-width: 760px;
+    }
+
+    .position-player-card {
+        min-height: 90px;
+    }
+
+    .player-number-input {
+        max-width: 180px;
+    }
+
+    .shot-course-grid {
+        max-width: 540px;
+    }
+
+}
+
+
+/* =========================
+   スマートフォン
+========================= */
+
+@media (max-width: 699px) {
+
+    .position-player-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+    }
+
+    .position-player-card {
+        min-height: 72px;
+        padding: 7px;
+        gap: 5px;
+    }
+
+    .position-label {
+        font-size: 13px;
+    }
+
+    .player-number-input {
+        height: 34px;
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================
+   小型スマートフォン
+========================= */
+
+@media (max-width: 400px) {
+
+    .match-header {
+        min-height: 58px;
+        padding: 7px 10px;
+    }
+
+    .match-title h1 {
+        font-size: 16px;
+    }
+
+    .match-container {
+        width: calc(100% - 10px);
+    }
+
+    .match-card {
+        padding: 11px;
+    }
+
+    .position-player-grid {
+        gap: 5px;
+    }
+
+    .position-player-card {
+        min-height: 68px;
+        padding: 6px 4px;
+    }
+
+    .position-label {
+        font-size: 12px;
+    }
+
+    .player-number-input {
+        height: 32px;
+        padding: 0 4px;
+        font-size: 12px;
+    }
+
+    .player-number-input::placeholder {
+        font-size: 9px;
+    }
+
+}
