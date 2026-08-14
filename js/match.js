@@ -65,6 +65,8 @@ function initializeMatchPage() {
 
         updateMatchDisplay();
 
+       renderEventHistory();
+
     }
 
     setupEventListeners();
@@ -1611,3 +1613,55 @@ function renderHistoryList(
     });
 
 }
+
+/* =========================================
+   HISTORY チーム切替
+========================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                ".history-team-button"
+            );
+
+        if (!button) {
+            return;
+        }
+
+        const team =
+            button.dataset.historyTeam;
+
+        document
+            .querySelectorAll(
+                ".history-team-button"
+            )
+            .forEach(item => {
+
+                item.classList.toggle(
+                    "active",
+                    item === button
+                );
+
+            });
+
+
+        document
+            .getElementById("homeHistory")
+            ?.classList.toggle(
+                "hidden",
+                team !== "home"
+            );
+
+
+        document
+            .getElementById("awayHistory")
+            ?.classList.toggle(
+                "hidden",
+                team !== "away"
+            );
+
+    }
+);
