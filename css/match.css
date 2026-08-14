@@ -945,3 +945,21 @@
 .history-closed {
     display: none !important;
 }
+
+/* =========================
+   HISTORY WIDTH
+========================= */
+
+.event-history {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.event-history.hidden {
+    display: none !important;
+}
+
+.history-event {
+    width: 100%;
+    box-sizing: border-box;
+}
