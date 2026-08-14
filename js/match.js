@@ -1640,16 +1640,16 @@ function switchHistoryTeam(team) {
     }
 
     const isOpen =
-        !history.classList.contains("history-closed");
+        !history.classList.contains("hidden");
 
     if (isOpen) {
 
-        history.classList.add("history-closed");
+        history.classList.add("hidden");
         button.classList.remove("active");
 
     } else {
 
-        history.classList.remove("history-closed");
+        history.classList.remove("hidden");
         button.classList.add("active");
 
     }
