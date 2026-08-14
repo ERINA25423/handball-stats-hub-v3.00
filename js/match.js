@@ -1622,45 +1622,40 @@ function renderHistoryList(
    HISTORY TEAM SWITCH
 ========================================= */
 
-
 function switchHistoryTeam(team) {
 
-    const homeHistory =
-        document.getElementById("homeHistory");
-
-    const awayHistory =
-        document.getElementById("awayHistory");
-
-    const buttons =
-        document.querySelectorAll(
-            ".history-team-button"
+    const history =
+        document.getElementById(
+            team === "home"
+                ? "homeHistory"
+                : "awayHistory"
         );
 
-    if (!homeHistory || !awayHistory) {
+    const button =
+        document.querySelector(
+            `.history-team-button[data-history-team="${team}"]`
+        );
+
+    if (!history || !button) {
         return;
     }
 
-    buttons.forEach(button => {
+    const isOpen =
+        history.style.display === "flex";
 
-        button.classList.toggle(
-            "active",
-            button.dataset.historyTeam === team
-        );
+    if (isOpen) {
 
-    });
-
-    if (team === "home") {
-
-        homeHistory.style.display = "flex";
-        awayHistory.style.display = "none";
+        history.style.display = "none";
+        button.classList.remove("active");
 
     } else {
 
-        homeHistory.style.display = "none";
-        awayHistory.style.display = "flex";
+        history.style.display = "flex";
+        button.classList.add("active");
 
     }
 }
+
 
 document.addEventListener(
     "click",
