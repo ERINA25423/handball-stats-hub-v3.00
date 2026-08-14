@@ -1675,7 +1675,3 @@ document.addEventListener(
 
     }
 );
-
-.history-closed {
-    display: none !important;
-}
