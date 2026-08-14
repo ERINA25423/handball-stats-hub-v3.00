@@ -164,8 +164,13 @@ document
 
     });
 
-  function updatePlayerNumberInputs() {
+  function selectTeam(team) {
 
+    if (team !== "home" && team !== "away") {
+        return;
+    }
+
+    // 現在表示されている背番号を保存
     document
         .querySelectorAll(".player-number-input")
         .forEach(input => {
@@ -173,11 +178,55 @@ document
             const position =
                 input.dataset.positionPlayer;
 
-            input.value =
-                teamPlayerNumbers[selectedTeam][position] || "";
+            if (position) {
+                teamPlayerNumbers[selectedTeam][position] =
+                    input.value.trim();
+            }
 
         });
-} 
+
+    // チーム変更
+    selectedTeam = team;
+
+    // 切り替えたチームの背番号を表示
+    document
+        .querySelectorAll(".player-number-input")
+        .forEach(input => {
+
+            const position =
+                input.dataset.positionPlayer;
+
+            if (position) {
+                input.value =
+                    teamPlayerNumbers[selectedTeam][position] || "";
+            }
+
+        });
+
+    // チームボタンの表示
+    document
+        .querySelectorAll(".team-switch-button")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.team === selectedTeam
+            );
+
+        });
+
+    selectedPlayer = "";
+    selectedPosition = "";
+
+    document
+        .querySelectorAll(".position-player-card")
+        .forEach(card => {
+            card.classList.remove("active");
+        });
+
+    updateSelectedTeamLabel();
+    updateStatusDisplay();
+}
 
 function selectPositionPlayer(
     position,
