@@ -6,6 +6,31 @@
 let currentMatch = null;
 
 let selectedTeam = "home";
+
+const teamPlayerNumbers = {
+    home: {
+        LW: "",
+        PV: "",
+        RW: "",
+        LB: "",
+        CB: "",
+        RB: "",
+        EP: "",
+        GK: ""
+    },
+
+    away: {
+        LW: "",
+        PV: "",
+        RW: "",
+        LB: "",
+        CB: "",
+        RB: "",
+        EP: "",
+        GK: ""
+    }
+};
+
 let selectedPlayer = "";
 let selectedPosition = "";
 let selectedCourse = "";
@@ -109,6 +134,7 @@ function setupEventListeners() {
     });
 
 
+
 document
     .querySelectorAll(".player-number-input")
     .forEach(input => {
@@ -118,9 +144,14 @@ document
             const position =
                 input.dataset.positionPlayer;
 
-            if (
-                selectedPosition === position
-            ) {
+            if (!position) {
+                return;
+            }
+
+            teamPlayerNumbers[selectedTeam][position] =
+                input.value.trim();
+
+            if (selectedPosition === position) {
 
                 selectedPlayer =
                     input.value.trim();
@@ -133,6 +164,20 @@ document
 
     });
 
+  function updatePlayerNumberInputs() {
+
+    document
+        .querySelectorAll(".player-number-input")
+        .forEach(input => {
+
+            const position =
+                input.dataset.positionPlayer;
+
+            input.value =
+                teamPlayerNumbers[selectedTeam][position] || "";
+
+        });
+} 
 
 function selectPositionPlayer(
     position,
