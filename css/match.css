@@ -963,3 +963,25 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+/* =========================
+   HISTORY 2 COLUMNS
+========================= */
+
+.history-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+}
+
+.history-columns .event-history {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.history-event {
+    width: 100%;
+    box-sizing: border-box;
+}
