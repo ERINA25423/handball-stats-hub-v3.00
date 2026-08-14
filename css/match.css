@@ -303,12 +303,12 @@
 
 .result-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 7px;
 }
 
 .result-grid button {
-    min-height: 48px;
+    min-height: 46px;
     font-size: 11px;
 }
 
