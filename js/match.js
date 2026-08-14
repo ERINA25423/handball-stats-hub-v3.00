@@ -873,6 +873,8 @@ function saveCurrentEvent() {
 
     updateMatchDisplay();
 
+   renderEventHistory();
+   
     clearCurrentInput();
 
 
@@ -1436,5 +1438,176 @@ function openRunningScore() {
         + encodeURIComponent(
             currentMatch.id
         );
+
+}
+
+/* =========================================
+   EVENT HISTORY
+========================================= */
+
+function renderEventHistory() {
+
+    if (!currentMatch) {
+        return;
+    }
+
+    const homeHistory =
+        document.getElementById("homeHistory");
+
+    const awayHistory =
+        document.getElementById("awayHistory");
+
+    if (!homeHistory || !awayHistory) {
+        return;
+    }
+
+    homeHistory.innerHTML = "";
+    awayHistory.innerHTML = "";
+
+    const events =
+        currentMatch.events || [];
+
+    const homeEvents =
+        events.filter(event =>
+            event.team === "home"
+        );
+
+    const awayEvents =
+        events.filter(event =>
+            event.team === "away"
+        );
+
+    renderHistoryList(
+        homeHistory,
+        homeEvents
+    );
+
+    renderHistoryList(
+        awayHistory,
+        awayEvents
+    );
+}
+
+
+/* =========================================
+   HISTORY リスト生成
+========================================= */
+
+function renderHistoryList(
+    container,
+    events
+) {
+
+    if (!events.length) {
+
+        container.innerHTML = `
+            <div class="history-empty">
+                記録はありません
+            </div>
+        `;
+
+        return;
+    }
+
+    events.forEach(event => {
+
+        const row =
+            document.createElement("div");
+
+        row.className =
+            "history-event";
+
+
+        const time =
+            document.createElement("div");
+
+        time.className =
+            "history-time";
+
+        time.textContent =
+            event.time || "--:--";
+
+
+        const main =
+            document.createElement("div");
+
+        main.className =
+            "history-main";
+
+
+        const player =
+            document.createElement("span");
+
+        player.className =
+            "history-player";
+
+        player.textContent =
+            event.playerNumber
+                ? `#${event.playerNumber}`
+                : "-";
+
+
+        const position =
+            document.createElement("span");
+
+        position.className =
+            "history-position";
+
+        position.textContent =
+            event.position || "-";
+
+
+        const course =
+            document.createElement("span");
+
+        course.className =
+            "history-course";
+
+        course.textContent =
+            event.shotCourse || "";
+
+
+        const result =
+            document.createElement("span");
+
+        result.className =
+            "history-result";
+
+        result.textContent =
+            event.result || "";
+
+
+        const attack =
+            document.createElement("span");
+
+        attack.className =
+            "history-attack";
+
+        attack.textContent =
+            event.attackType || "";
+
+
+        main.appendChild(player);
+        main.appendChild(position);
+
+        if (event.shotCourse) {
+            main.appendChild(course);
+        }
+
+        if (event.result) {
+            main.appendChild(result);
+        }
+
+        if (event.attackType) {
+            main.appendChild(attack);
+        }
+
+
+        row.appendChild(time);
+        row.appendChild(main);
+
+        container.appendChild(row);
+
+    });
 
 }
