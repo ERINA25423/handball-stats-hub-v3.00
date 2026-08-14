@@ -723,3 +723,17 @@
     }
 
 }
+
+/* =========================
+   結果ボタン：常に4列
+========================= */
+
+.result-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 7px;
+}
+
+.result-grid button {
+    min-height: 46px;
+}
