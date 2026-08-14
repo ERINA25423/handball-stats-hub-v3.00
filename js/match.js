@@ -1665,3 +1665,72 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================
+   HISTORY TEAM SWITCH
+========================================= */
+
+function switchHistoryTeam(team) {
+
+    const homeHistory =
+        document.getElementById("homeHistory");
+
+    const awayHistory =
+        document.getElementById("awayHistory");
+
+    const buttons =
+        document.querySelectorAll(
+            ".history-team-button"
+        );
+
+
+    if (!homeHistory || !awayHistory) {
+        return;
+    }
+
+
+    // ボタンの選択状態
+    buttons.forEach(button => {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.historyTeam === team
+        );
+
+    });
+
+
+    // 履歴の表示切替
+    if (team === "home") {
+
+        homeHistory.classList.remove("hidden");
+        awayHistory.classList.add("hidden");
+
+    } else {
+
+        homeHistory.classList.add("hidden");
+        awayHistory.classList.remove("hidden");
+
+    }
+
+}
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                ".history-team-button"
+            );
+
+        if (!button) {
+            return;
+        }
+
+        switchHistoryTeam(
+            button.dataset.historyTeam
+        );
+
+    }
+);
