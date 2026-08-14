@@ -1,679 +1,621 @@
-/* =========================================
-   Handball Stats Hub
-   storage.js
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>試合入力 | Handball Stats Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/match.css">
+
+    <script defer src="js/storage.js"></script>
+    <script defer src="js/match.js"></script>
+</head>
+
+<body>
+
+<header class="match-header">
+
+    <button
+        type="button"
+        class="back-button"
+        onclick="location.href='index.html'">
+        ←
+    </button>
 
-   試合・イベントデータの保存管理
-   ========================================= */
+    <div class="match-title">
+        <h1>試合入力</h1>
+        <span id="matchStatus">NEW MATCH</span>
+    </div>
 
-const STORAGE_KEYS = {
-    MATCHES: "hsh_matches",
-    CURRENT_MATCH: "hsh_current_match",
-    PLAYERS: "hsh_players",
-    TEAMS: "hsh_teams"
-};
+    <button
+        type="button"
+        class="running-score-button"
+        onclick="openRunningScore()">
+        SCORE
+    </button>
 
+</header>
 
-/* =========================================
-   共通ユーティリティ
-========================================= */
 
-function generateId(prefix = "id") {
-    return (
-        prefix +
-        "_" +
-        Date.now().toString(36) +
-        "_" +
-        Math.random().toString(36).substring(2, 8)
-    );
-}
+<main class="match-container">
 
+    <!-- =========================
+         試合作成
+    ========================== -->
 
-function getStorage(key, defaultValue = []) {
-    try {
-        const data = localStorage.getItem(key);
+    <section
+        id="matchSetup"
+        class="match-card setup-card">
 
-        if (!data) {
-            return defaultValue;
-        }
+        <div class="card-title">
+            <h2>試合情報</h2>
+        </div>
 
-        return JSON.parse(data);
+        <div class="form-grid">
 
-    } catch (error) {
-        console.error("Storage read error:", error);
-        return defaultValue;
-    }
-}
+            <label class="form-field">
+                <span>大会名</span>
+                <input
+                    type="text"
+                    id="competition"
+                    placeholder="大会名">
+            </label>
 
+            <label class="form-field">
+                <span>日付</span>
+                <input
+                    type="date"
+                    id="matchDate">
+            </label>
 
-function setStorage(key, value) {
-    try {
-        localStorage.setItem(key, JSON.stringify(value));
-        return true;
+            <label class="form-field">
+                <span>自チーム</span>
+                <input
+                    type="text"
+                    id="homeTeam"
+                    placeholder="自チーム名">
+            </label>
 
-    } catch (error) {
-        console.error("Storage write error:", error);
-        return false;
-    }
-}
+            <label class="form-field">
+                <span>相手チーム</span>
+                <input
+                    type="text"
+                    id="awayTeam"
+                    placeholder="相手チーム名">
+            </label>
 
+        </div>
 
-/* =========================================
-   試合データ
-========================================= */
+        <button
+            type="button"
+            id="createMatchButton"
+            class="primary-button">
+            試合を開始する
+        </button>
 
-function getMatches() {
-    return getStorage(STORAGE_KEYS.MATCHES, []);
-}
+    </section>
 
 
-function getMatch(matchId) {
-    const matches = getMatches();
+    <!-- =========================
+         試合中ヘッダー
+    ========================== -->
 
-    return matches.find(
-        match => match.id === matchId
-    ) || null;
-}
+    <section
+        id="liveMatchArea"
+        class="live-match-area hidden">
 
+        <div class="score-header">
 
-function createMatch(matchData = {}) {
+            <div class="team-score home-score">
 
-    const now = new Date().toISOString();
+                <span
+                    id="displayHomeTeam"
+                    class="team-name">
+                    自チーム
+                </span>
 
-    const match = {
+                <strong id="homeScore">
+                    0
+                </strong>
 
-        id: generateId("match"),
+            </div>
 
-        createdAt: now,
-        updatedAt: now,
 
-        date: matchData.date || "",
-        competition: matchData.competition || "",
+            <div class="match-clock">
 
-        homeTeam: matchData.homeTeam || "",
-        awayTeam: matchData.awayTeam || "",
+                <span id="periodDisplay">
+                    前半
+                </span>
 
-        homeScore: 0,
-        awayScore: 0,
+                <strong id="matchClock">
+                    00:00
+                </strong>
 
-        period: "1H",
+                <div class="clock-controls">
 
-        status: "not_started",
+                    <button
+                        type="button"
+                        id="clockStartButton">
+                        START
+                    </button>
 
-        events: [],
+                    <button
+                        type="button"
+                        id="clockStopButton">
+                        STOP
+                    </button>
 
-        notes: ""
+                </div>
 
-    };
+            </div>
 
-    const matches = getMatches();
 
-    matches.unshift(match);
+            <div class="team-score away-score">
 
-    setStorage(
-        STORAGE_KEYS.MATCHES,
-        matches
-    );
+                <span
+                    id="displayAwayTeam"
+                    class="team-name">
+                    相手チーム
+                </span>
 
-    setCurrentMatchId(match.id);
+                <strong id="awayScore">
+                    0
+                </strong>
 
-    return match;
-}
+            </div>
 
+        </div>
 
-/* =========================================
-   試合更新
-========================================= */
 
-function updateMatch(matchId, updates = {}) {
+        <!-- =========================
+             チーム切替
+        ========================== -->
 
-    const matches = getMatches();
+        <div class="team-switch">
 
-    const index = matches.findIndex(
-        match => match.id === matchId
-    );
+            <button
+                type="button"
+                class="team-switch-button active"
+                data-team="home"
+                id="homeTeamButton">
+                自チーム
+            </button>
 
-    if (index === -1) {
-        return null;
-    }
+            <button
+                type="button"
+                class="team-switch-button"
+                data-team="away"
+                id="awayTeamButton">
+                相手チーム
+            </button>
 
-    matches[index] = {
+        </div>
 
-        ...matches[index],
 
-        ...updates,
+        <!-- =========================
+             現在の入力情報
+        ========================== -->
 
-        updatedAt: new Date().toISOString()
+        <section class="input-status-card">
 
-    };
+            <div>
+                <span>TEAM</span>
+                <strong id="selectedTeamLabel">
+                    自チーム
+                </strong>
+            </div>
 
-    setStorage(
-        STORAGE_KEYS.MATCHES,
-        matches
-    );
+            <div>
+                <span>PLAYER</span>
+                <strong id="selectedPlayerLabel">
+                    -
+                </strong>
+            </div>
 
-    return matches[index];
-}
+            <div>
+                <span>POSITION</span>
+                <strong id="selectedPositionLabel">
+                    -
+                </strong>
+            </div>
 
+            <div>
+                <span>COURSE</span>
+                <strong id="selectedCourseLabel">
+                    -
+                </strong>
+            </div>
 
-/* =========================================
-   試合削除
-========================================= */
+            <div>
+                <span>RESULT</span>
+                <strong id="selectedResultLabel">
+                    -
+                </strong>
+            </div>
 
-function deleteMatch(matchId) {
+        </section>
 
-    const matches = getMatches();
 
-    const filtered = matches.filter(
-        match => match.id !== matchId
-    );
+        <!-- =========================
+             選手・ポジション
+        ========================== -->
 
-    setStorage(
-        STORAGE_KEYS.MATCHES,
-        filtered
-    );
+        <section class="input-section">
 
-    const currentMatchId = getCurrentMatchId();
+            <div class="section-heading">
 
-    if (currentMatchId === matchId) {
-        clearCurrentMatch();
-    }
+                <h2>選手</h2>
 
-    return true;
-}
+                <span>
+                    タップして選択
+                </span>
 
+            </div>
 
-/* =========================================
-   現在の試合
-========================================= */
+            <div
+                id="playerButtons"
+                class="player-grid">
 
-function setCurrentMatchId(matchId) {
+                <button type="button" data-player="1">1</button>
+                <button type="button" data-player="2">2</button>
+                <button type="button" data-player="3">3</button>
+                <button type="button" data-player="4">4</button>
+                <button type="button" data-player="5">5</button>
+                <button type="button" data-player="6">6</button>
+                <button type="button" data-player="7">7</button>
+                <button type="button" data-player="8">8</button>
+                <button type="button" data-player="9">9</button>
+                <button type="button" data-player="10">10</button>
+                <button type="button" data-player="11">11</button>
+                <button type="button" data-player="12">12</button>
+                <button type="button" data-player="13">13</button>
+                <button type="button" data-player="14">14</button>
+                <button type="button" data-player="15">15</button>
+                <button type="button" data-player="16">16</button>
 
-    localStorage.setItem(
-        STORAGE_KEYS.CURRENT_MATCH,
-        matchId
-    );
-}
+            </div>
 
+        </section>
 
-function getCurrentMatchId() {
 
-    return localStorage.getItem(
-        STORAGE_KEYS.CURRENT_MATCH
-    );
-}
+        <section class="input-section">
 
+            <div class="section-heading">
 
-function getCurrentMatch() {
+                <h2>ポジション</h2>
 
-    const matchId = getCurrentMatchId();
+            </div>
 
-    if (!matchId) {
-        return null;
-    }
+            <div class="position-grid">
 
-    return getMatch(matchId);
-}
+                <button
+                    type="button"
+                    data-position="LW">
+                    LW
+                </button>
 
+                <button
+                    type="button"
+                    data-position="LB">
+                    LB
+                </button>
 
-function clearCurrentMatch() {
+                <button
+                    type="button"
+                    data-position="CB">
+                    CB
+                </button>
 
-    localStorage.removeItem(
-        STORAGE_KEYS.CURRENT_MATCH
-    );
-}
+                <button
+                    type="button"
+                    data-position="RB">
+                    RB
+                </button>
 
+                <button
+                    type="button"
+                    data-position="RW">
+                    RW
+                </button>
 
-/* =========================================
-   イベント
-========================================= */
+                <button
+                    type="button"
+                    data-position="PV">
+                    PV
+                </button>
 
-/*
-    1プレー = 1イベント
+            </div>
 
-    情報が一部空欄でも保存可能。
+        </section>
 
-    例：
 
-    {
-        id,
-        time,
-        period,
-        team,
-        playerNumber,
-        position,
-        attackType,
-        shotCourse,
-        result,
-        missType,
-        penaltyType,
-        timeoutTeam,
-        freeThrow,
-        notes
-    }
-*/
+        <!-- =========================
+             シュートコース
+        ========================== -->
 
+        <section class="input-section">
 
-function createEvent(eventData = {}) {
+            <div class="section-heading">
 
-    return {
+                <h2>シュートコース</h2>
 
-        id: generateId("event"),
+                <span>
+                    ワンタップで選択
+                </span>
 
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+            </div>
 
-        time: eventData.time || "",
+            <div
+                id="shotCourseGrid"
+                class="shot-course-grid">
 
-        period: eventData.period || "1H",
+                <button type="button" data-course="UL">
+                    UL
+                </button>
 
-        team: eventData.team || "",
+                <button type="button" data-course="UC">
+                    UC
+                </button>
 
-        playerNumber:
-            eventData.playerNumber ?? "",
+                <button type="button" data-course="UR">
+                    UR
+                </button>
 
-        position:
-            eventData.position || "",
+                <button type="button" data-course="ML">
+                    ML
+                </button>
 
-        attackType:
-            eventData.attackType || "",
+                <button type="button" data-course="MC">
+                    MC
+                </button>
 
-        shotCourse:
-            eventData.shotCourse || "",
+                <button type="button" data-course="MR">
+                    MR
+                </button>
 
-        result:
-            eventData.result || "",
+                <button type="button" data-course="LL">
+                    LL
+                </button>
 
-        missType:
-            eventData.missType || "",
+                <button type="button" data-course="LC">
+                    LC
+                </button>
 
-        penaltyType:
-            eventData.penaltyType || "",
+                <button type="button" data-course="LR">
+                    LR
+                </button>
 
-        timeoutTeam:
-            eventData.timeoutTeam || "",
+            </div>
 
-        freeThrow:
-            eventData.freeThrow || "",
+        </section>
 
-        notes:
-            eventData.notes || ""
 
-    };
-}
+        <!-- =========================
+             結果
+        ========================== -->
 
+        <section class="input-section">
 
-/* =========================================
-   イベント保存
-========================================= */
+            <div class="section-heading">
 
-function saveEvent(matchId, eventData) {
+                <h2>結果</h2>
 
-    const matches = getMatches();
+            </div>
 
-    const matchIndex = matches.findIndex(
-        match => match.id === matchId
-    );
+            <div class="result-grid">
 
-    if (matchIndex === -1) {
-        return null;
-    }
+                <button
+                    type="button"
+                    data-result="GOAL">
+                    GOAL
+                </button>
 
-    const event = createEvent(eventData);
+                <button
+                    type="button"
+                    data-result="GK">
+                    GK
+                </button>
 
-    matches[matchIndex].events.push(event);
+                <button
+                    type="button"
+                    data-result="BLOCK">
+                    BLOCK
+                </button>
 
-    matches[matchIndex].updatedAt =
-        new Date().toISOString();
+                <button
+                    type="button"
+                    data-result="POST">
+                    POST
+                </button>
 
-    updateMatchScore(matches[matchIndex]);
+                <button
+                    type="button"
+                    data-result="OUT">
+                    OUT
+                </button>
 
-    setStorage(
-        STORAGE_KEYS.MATCHES,
-        matches
-    );
+            </div>
 
-    return event;
-}
+        </section>
 
 
-/* =========================================
-   イベント編集
-========================================= */
+        <!-- =========================
+             攻撃種類
+        ========================== -->
 
-function updateEvent(
-    matchId,
-    eventId,
-    updates = {}
-) {
+        <section class="input-section">
 
-    const matches = getMatches();
+            <div class="section-heading">
 
-    const matchIndex = matches.findIndex(
-        match => match.id === matchId
-    );
+                <h2>攻撃</h2>
 
-    if (matchIndex === -1) {
-        return null;
-    }
+            </div>
 
-    const eventIndex =
-        matches[matchIndex].events.findIndex(
-            event => event.id === eventId
-        );
+            <div class="attack-grid">
 
-    if (eventIndex === -1) {
-        return null;
-    }
+                <button
+                    type="button"
+                    data-attack="SET">
+                    SET
+                </button>
 
-    matches[matchIndex].events[eventIndex] = {
+                <button
+                    type="button"
+                    data-attack="FAST">
+                    FAST
+                </button>
 
-        ...matches[matchIndex].events[eventIndex],
+                <button
+                    type="button"
+                    data-attack="2FAST">
+                    2FAST
+                </button>
 
-        ...updates,
+                <button
+                    type="button"
+                    data-attack="7M">
+                    7M
+                </button>
 
-        updatedAt: new Date().toISOString()
+            </div>
 
-    };
+        </section>
 
-    matches[matchIndex].updatedAt =
-        new Date().toISOString();
 
-    updateMatchScore(matches[matchIndex]);
+        <!-- =========================
+             OTHER
+        ========================== -->
 
-    setStorage(
-        STORAGE_KEYS.MATCHES,
-        matches
-    );
+        <section class="other-section">
 
-    return matches[matchIndex].events[eventIndex];
-}
+            <button
+                type="button"
+                id="otherButton"
+                class="other-button">
+                OTHER
+            </button>
 
+            <div
+                id="otherMenu"
+                class="other-menu hidden">
 
-/* =========================================
-   イベント削除
-========================================= */
+                <button
+                    type="button"
+                    data-other="MISS">
+                    ミス
+                </button>
 
-function deleteEvent(matchId, eventId) {
+                <button
+                    type="button"
+                    data-other="PENALTY">
+                    ペナルティ
+                </button>
 
-    const matches = getMatches();
+                <button
+                    type="button"
+                    data-other="TIMEOUT">
+                    タイムアウト
+                </button>
 
-    const matchIndex = matches.findIndex(
-        match => match.id === matchId
-    );
+                <button
+                    type="button"
+                    data-other="FREETHROW">
+                    フリースロー
+                </button>
 
-    if (matchIndex === -1) {
-        return false;
-    }
+                <button
+                    type="button"
+                    data-other="SUBSTITUTION">
+                    選手交代
+                </button>
 
-    matches[matchIndex].events =
-        matches[matchIndex].events.filter(
-            event => event.id !== eventId
-        );
+            </div>
 
-    matches[matchIndex].updatedAt =
-        new Date().toISOString();
+        </section>
 
-    updateMatchScore(matches[matchIndex]);
 
-    setStorage(
-        STORAGE_KEYS.MATCHES,
-        matches
-    );
+        <!-- =========================
+             保存
+        ========================== -->
 
-    return true;
-}
+        <section class="save-section">
 
+            <button
+                type="button"
+                id="saveEventButton"
+                class="save-event-button">
+                この記録を保存
+            </button>
 
-/* =========================================
-   イベント取得
-========================================= */
+            <button
+                type="button"
+                id="clearInputButton"
+                class="clear-input-button">
+                入力をクリア
+            </button>
 
-function getEvents(matchId) {
+        </section>
 
-    const match = getMatch(matchId);
 
-    if (!match) {
-        return [];
-    }
+        <!-- =========================
+             試合終了
+        ========================== -->
 
-    return match.events || [];
-}
+        <section class="finish-section">
 
+            <button
+                type="button"
+                id="finishMatchButton"
+                class="finish-button">
+                試合終了・保存
+            </button>
 
-function getEvent(matchId, eventId) {
+        </section>
 
-    const events = getEvents(matchId);
+    </section>
 
-    return events.find(
-        event => event.id === eventId
-    ) || null;
-}
+</main>
 
 
-/* =========================================
-   スコア自動計算
-========================================= */
+<!-- =========================
+     OTHERモーダル
+========================== -->
 
-function updateMatchScore(match) {
+<div
+    id="otherModal"
+    class="modal-overlay hidden">
 
-    let homeScore = 0;
-    let awayScore = 0;
+    <div class="modal">
 
-    const homeTeam = match.homeTeam;
-    const awayTeam = match.awayTeam;
+        <div class="modal-header">
 
-    match.events.forEach(event => {
+            <h2 id="otherModalTitle">
+                OTHER
+            </h2>
 
-        if (event.result !== "GOAL") {
-            return;
-        }
+            <button
+                type="button"
+                id="closeOtherModal">
+                ×
+            </button>
 
-        if (event.team === "home") {
-            homeScore++;
+        </div>
 
-        } else if (event.team === "away") {
-            awayScore++;
-        }
 
-        /*
-            チーム名で保存されている場合にも
-            対応できるようにする。
-        */
+        <div
+            id="otherModalContent"
+            class="modal-content">
 
-        else if (
-            event.team === homeTeam &&
-            homeTeam !== ""
-        ) {
-            homeScore++;
+            <!-- JavaScriptで内容を生成 -->
 
-        } else if (
-            event.team === awayTeam &&
-            awayTeam !== ""
-        ) {
-            awayScore++;
-        }
+        </div>
 
-    });
+    </div>
 
-    match.homeScore = homeScore;
-    match.awayScore = awayScore;
+</div>
 
-    return match;
-}
 
-
-/* =========================================
-   試合ステータス
-========================================= */
-
-function startMatch(matchId) {
-
-    return updateMatch(
-        matchId,
-        {
-            status: "live"
-        }
-    );
-}
-
-
-function finishMatch(matchId) {
-
-    return updateMatch(
-        matchId,
-        {
-            status: "finished"
-        }
-    );
-}
-
-
-/* =========================================
-   選手データ
-========================================= */
-
-function getPlayers() {
-
-    return getStorage(
-        STORAGE_KEYS.PLAYERS,
-        []
-    );
-}
-
-
-function savePlayer(playerData = {}) {
-
-    const players = getPlayers();
-
-    const player = {
-
-        id: generateId("player"),
-
-        number:
-            playerData.number ?? "",
-
-        name:
-            playerData.name || "",
-
-        position:
-            playerData.position || "",
-
-        team:
-            playerData.team || ""
-
-    };
-
-    players.push(player);
-
-    setStorage(
-        STORAGE_KEYS.PLAYERS,
-        players
-    );
-
-    return player;
-}
-
-
-/* =========================================
-   チームデータ
-========================================= */
-
-function getTeams() {
-
-    return getStorage(
-        STORAGE_KEYS.TEAMS,
-        []
-    );
-}
-
-
-function saveTeam(teamData = {}) {
-
-    const teams = getTeams();
-
-    const team = {
-
-        id: generateId("team"),
-
-        name:
-            teamData.name || "",
-
-        shortName:
-            teamData.shortName || ""
-
-    };
-
-    teams.push(team);
-
-    setStorage(
-        STORAGE_KEYS.TEAMS,
-        teams
-    );
-
-    return team;
-}
-
-
-/* =========================================
-   全データ削除
-========================================= */
-
-function clearAllData() {
-
-    localStorage.removeItem(
-        STORAGE_KEYS.MATCHES
-    );
-
-    localStorage.removeItem(
-        STORAGE_KEYS.CURRENT_MATCH
-    );
-
-    localStorage.removeItem(
-        STORAGE_KEYS.PLAYERS
-    );
-
-    localStorage.removeItem(
-        STORAGE_KEYS.TEAMS
-    );
-
-}
-
-
-/* =========================================
-   デバッグ用
-========================================= */
-
-window.HandballStorage = {
-
-    getMatches,
-    getMatch,
-    createMatch,
-    updateMatch,
-    deleteMatch,
-
-    setCurrentMatchId,
-    getCurrentMatchId,
-    getCurrentMatch,
-    clearCurrentMatch,
-
-    createEvent,
-    saveEvent,
-    updateEvent,
-    deleteEvent,
-    getEvents,
-    getEvent,
-
-    updateMatchScore,
-
-    startMatch,
-    finishMatch,
-
-    getPlayers,
-    savePlayer,
-
-    getTeams,
-    saveTeam,
-
-    clearAllData
-
-};
+</body>
+</html>
