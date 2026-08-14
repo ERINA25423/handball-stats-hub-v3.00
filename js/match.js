@@ -71,7 +71,10 @@ function initializeMatchPage() {
 
     setupEventListeners();
 
+
+   switchHistoryTeam("home");
 }
+
 
 
 /* =========================================
