@@ -72,7 +72,6 @@ function initializeMatchPage() {
     setupEventListeners();
 
 
-   switchHistoryTeam("home");
 }
 
 
@@ -1641,16 +1640,16 @@ function switchHistoryTeam(team) {
     }
 
     const isOpen =
-        history.style.display === "flex";
+        !history.classList.contains("history-closed");
 
     if (isOpen) {
 
-        history.style.display = "none";
+        history.classList.add("history-closed");
         button.classList.remove("active");
 
     } else {
 
-        history.style.display = "flex";
+        history.classList.remove("history-closed");
         button.classList.add("active");
 
     }
@@ -1676,3 +1675,7 @@ document.addEventListener(
 
     }
 );
+
+.history-closed {
+    display: none !important;
+}
