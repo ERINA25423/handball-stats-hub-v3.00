@@ -1673,6 +1673,7 @@ document.addEventListener(
    HISTORY TEAM SWITCH
 ========================================= */
 
+
 function switchHistoryTeam(team) {
 
     const homeHistory =
@@ -1686,13 +1687,10 @@ function switchHistoryTeam(team) {
             ".history-team-button"
         );
 
-
     if (!homeHistory || !awayHistory) {
         return;
     }
 
-
-    // ボタンの選択状態
     buttons.forEach(button => {
 
         button.classList.toggle(
@@ -1702,20 +1700,17 @@ function switchHistoryTeam(team) {
 
     });
 
-
-    // 履歴の表示切替
     if (team === "home") {
 
-        homeHistory.classList.remove("hidden");
-        awayHistory.classList.add("hidden");
+        homeHistory.style.display = "flex";
+        awayHistory.style.display = "none";
 
     } else {
 
-        homeHistory.classList.add("hidden");
-        awayHistory.classList.remove("hidden");
+        homeHistory.style.display = "none";
+        awayHistory.style.display = "flex";
 
     }
-
 }
 
 document.addEventListener(
