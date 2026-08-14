@@ -133,23 +133,6 @@ document
 
     });
 
-   
-    document
-        .querySelectorAll(
-            ".position-player-card"
-        )
-        .forEach(item => {
-
-            item.classList.remove(
-                "active"
-            );
-
-        });
-
-    card.classList.add("active");
-
-    updateStatusDisplay();
-}
 
 function selectPositionPlayer(
     position,
